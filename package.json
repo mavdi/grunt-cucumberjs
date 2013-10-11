@@ -1,0 +1,47 @@
+{
+  "name": "grunt-cudoc",
+  "description": "Generates documentation from Cucumber features",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mavdi/cudoc",
+  "author": {
+    "name": "Mehdi Avdi",
+    "email": "mehdi.avdi@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mavdi/cudoc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mavdi/cudoc/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/mavdi/cudoc/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "cucumber": "~0.3.1",
+    "handlebars": "~1.0.12",
+    "underscore": "~1.5.2"
+  }
+}

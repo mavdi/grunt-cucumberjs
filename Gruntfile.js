@@ -1,6 +1,6 @@
 /*
- * grunt-cudoc
- * https://github.com/mavdi/cudoc
+ * grunt-cucumberjs
+ * https://github.com/mavdi/cucumberjs
  *
  * Copyright (c) 2013 Mehdi Avdi
  * Licensed under the MIT license.
@@ -29,17 +29,14 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
-    cudoc: {
+    cucumberjs: {
       options: {
         steps: '',
         tags: '',
         cucumber: '',
-        format: 'html',
-        css: '',
-        indexTemplate : '',
-        featuresTemplate : ''
+        output: 'output.html'
       },
-      output: 'output.html'
+      format: 'html'
     },
 
     // Unit tests.

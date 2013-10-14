@@ -47,8 +47,7 @@ module.exports = function(grunt) {
         publish(JSON.parse(stdout));
         return done();
       }
-      
-      console.log(config)
+
       if(options.output) {
         grunt.file.write(options.output, stdout);
         return done();
@@ -64,8 +63,6 @@ module.exports = function(grunt) {
 
       grunt.file.write(options.output || 'output.html', wrapped);
     };
-
-    console.log(options)
 
     var renderFeatures = function(features) {
       var source = grunt.file.read(options.featuresTemplate);

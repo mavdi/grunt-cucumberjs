@@ -23,9 +23,9 @@ module.exports = function(grunt) {
 
     var options = this.options({
       format: 'html',
-      css: 'templates/simple/styles.css',
-      indexTemplate : 'templates/simple/index.tmpl',
-      featuresTemplate : 'templates/simple/features.tmpl'
+      css: 'node_modules/cucumberjs/templates/simple/styles.css',
+      indexTemplate : 'node_modules/cucumberjs/templates/simple/index.tmpl',
+      featuresTemplate : 'node_modules/cucumberjs/templates/simple/features.tmpl'
     });
     var config = grunt.config.get('cucumberjs');
 

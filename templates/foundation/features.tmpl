@@ -1,0 +1,41 @@
+<% _.each(features, function(feature) { %> 
+<div class="row">
+  <div class="large-12 columns">
+
+    <h3 class="subheader"><span class="highlight"><%= feature.keyword %>: </span><%= feature.name %></h3>
+    <p class="subheader"><%= feature.description.replace(/\n/g, '<br />') %></p>
+    <br />
+    <% _.each(feature.elements, function(element) { %> 
+      <div class="section-container accordion" data-section="accordion">
+        <section>
+          <p class="title" data-section-title><a href="#"><spa><%= element.keyword %>: </span><%= element.name %> 
+            <% if(_.find(element.steps, function(step){ step.result.status === 'fail'; })) {  %>
+              <span class="alert label right">Failed</span>
+            <% } else { %>
+              <span class="success label right">Success</span>
+            <% } %>
+          </a>
+          </p>
+          <div class="content" data-section-content>
+            <% _.each(element.steps, function(step) { %> 
+              <p class="subheader">
+                <span class="text"><span class="keyword highlight"><%= step.keyword %></span> <%= step.name %></span>
+                <small>
+                <% if(step.result.status === 'fail') { %>
+                  <span class="alert label right">Failed</span>
+                <% } else { %>
+                  <span class="success label right">Success</span>
+                <% } %>
+                </small>
+              </p>              
+            <% }); %>
+          </div>
+        </section> 
+      </div>
+    <% }); %> 
+    <br />
+    <hr />
+  </div>
+</div>
+    
+<% }); %> 

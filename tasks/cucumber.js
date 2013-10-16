@@ -24,6 +24,7 @@ module.exports = function(grunt) {
     var options = this.options({
       format: 'html',
       css: 'node_modules/grunt-cucumberjs/templates/foundation/styles.css',
+      javascript: 'node_modules/grunt-cucumberjs/templates/foundation/script.js',
       indexTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/index.tmpl',
       featuresTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/features.tmpl'
     });
@@ -72,7 +73,8 @@ module.exports = function(grunt) {
     var wrap = function(rendered) {
       var source = grunt.file.read(options.indexTemplate);
       var styles = grunt.file.read(options.css);
-      return _.template(source)({features : rendered, styles : styles});
+      var script = grunt.file.read(options.javascript);
+      return _.template(source)({features : rendered, styles : styles, script: script});
     };
   });
 

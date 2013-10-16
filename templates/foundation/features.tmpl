@@ -8,7 +8,7 @@
     <% _.each(feature.elements, function(element) { %> 
       <div class="section-container accordion" data-section="accordion">
         <section>
-          <p class="title" data-section-title><a href="#"><spa><%= element.keyword %>: </span><%= element.name %> 
+          <p class="title accordion-title" data-section-title><a href="#"><spa><%= element.keyword %>: </span><%= element.name %> 
             <% if(_.some(element.steps, function(step){ return step.result.status === 'failed'; })) {  %>
               <span class="alert label right">Failed</span>
             <% } else { %>

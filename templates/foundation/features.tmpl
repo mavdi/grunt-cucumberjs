@@ -9,7 +9,7 @@
       <div class="section-container accordion" data-section="accordion">
         <section>
           <p class="title" data-section-title><a href="#"><spa><%= element.keyword %>: </span><%= element.name %> 
-            <% if(_.find(element.steps, function(step){ step.result.status === 'fail'; })) {  %>
+            <% if(_.some(element.steps, function(step){ return step.result.status === 'failed'; })) {  %>
               <span class="alert label right">Failed</span>
             <% } else { %>
               <span class="success label right">Success</span>
@@ -21,7 +21,7 @@
               <p class="subheader">
                 <span class="text"><span class="keyword highlight"><%= step.keyword %></span> <%= step.name %></span>
                 <small>
-                <% if(step.result.status === 'fail') { %>
+                <% if(step.result.status === 'failed') { %>
                   <span class="alert label right">Failed</span>
                 <% } else { %>
                   <span class="success label right">Success</span>
@@ -37,5 +37,4 @@
     <hr />
   </div>
 </div>
-    
 <% }); %> 

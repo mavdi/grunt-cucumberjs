@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CuDoc</title>
+    <title>Cucumber Feature Tests</title>
     <style type="text/css">
-     /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
+      /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 
 /* ==========================================================================
    HTML5 display definitions
@@ -435,17 +435,47 @@ header h4 { font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verda
 .highlight { color: #5EC7E5; }
 
     </style>
-    <script src="jquery.js"></script>
-    <script src="foundation.min.js"></script>
     <script>
-      $(document).foundation();
+      window.onload = function() {
+  
+  //  Accordion hide/show
+  var accordionTitles = document.getElementsByClassName('accordion-title');
+
+  //  Convert node list to array
+  Array.prototype.slice.call(accordionTitles).forEach(function(title){
+
+    title.onclick = function() { 
+      var content = next(title),
+          style = window.getComputedStyle(content),
+          display = style.getPropertyValue('display');
+
+      if (display === 'block') {
+        content.style.display = 'none';
+      } else {
+        content.style.display = 'block';
+      }
+      return false; 
+    }
+  });
+};
+
+/* 
+   Credit to John Resig for this function 
+   taken from Pro JavaScript techniques 
+*/
+function next(elem) {
+    do {
+        elem = elem.nextSibling;
+    } while (elem && elem.nodeType !== 1);
+    return elem;        
+}
     </script>
   </head>
   <body>
     <header>
       <div class="row">
         <div class="large-12 columns">
-          <h1 class="subheader">Glos API</h1>
+          <h1 class="subheader">Glos API </h1>
           <h4 class="subheader">Feature tests</h4>
         </div>
       </div>
@@ -462,7 +492,7 @@ header h4 { font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verda
      
       <div class="section-container accordion" data-section="accordion">
         <section>
-          <p class="title" data-section-title><a href="#"><spa>Scenario: </span>Test Scenario 1 
+          <p class="title accordion-title" data-section-title><a href="#"><spa>Scenario: </span>Test Scenario 1 
             
               <span class="success label right">Success</span>
             

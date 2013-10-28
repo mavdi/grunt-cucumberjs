@@ -46,6 +46,7 @@ module.exports = function(grunt) {
     exec('./node_modules/.bin/cucumber-js ' + commands.join(' '), function(error, stdout, stderr){
       if(error) {
         grunt.log.error('failed tests, please see the output');
+        if(config.format === 'html') publish(JSON.parse(stdout));
         return done(false);
       }
       if(config.format === 'html') {

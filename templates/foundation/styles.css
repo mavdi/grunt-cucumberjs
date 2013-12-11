@@ -424,7 +424,9 @@ header {
 }
 
 header h1, 
-header h4 { color: #fff !important; }
-header h4 { font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif; -webkit-font-smoothing: antialiased; }
+header h4   { color: #fff !important; }
+header h4   { font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif; -webkit-font-smoothing: antialiased; }
+
+.right-col  { text-align: right; }
 
 .highlight { color: #5EC7E5; }

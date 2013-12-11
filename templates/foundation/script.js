@@ -19,6 +19,17 @@ window.onload = function() {
       return false; 
     }
   });
+
+  //  Get app version
+  var oReq = new XMLHttpRequest();
+  oReq.onload = function() {
+    var response = JSON.parse(this.responseText);
+
+    document.getElementById("appVersion").innerHTML = response.version;
+    document.getElementById("since").innerHTML = "Built " + response.since;
+  }
+  oReq.open("get", "build", true);
+  oReq.send();
 };
 
 /* 

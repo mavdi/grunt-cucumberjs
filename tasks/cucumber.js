@@ -28,6 +28,7 @@ module.exports = function(grunt) {
       format: 'html',
       css: 'node_modules/grunt-cucumberjs/templates/foundation/styles.css',
       javascript: 'node_modules/grunt-cucumberjs/templates/foundation/script.js',
+      moment: 'node_modules/grunt-cucumberjs/templates/foundation/moment.min.js',
       indexTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/index.tmpl',
       featuresTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/features.tmpl',
       buildTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/build.tmpl'
@@ -79,7 +80,6 @@ module.exports = function(grunt) {
       var wrapped = wrap(renderedFeatures, renderedBuild);
 
       grunt.file.write(options.outputPath + '/report.' + options.format, wrapped);
-      grunt.file.copy('node_modules/grunt-cucumberjs/templates/foundation/moment.min.js', options.outputPath + '/moment.min.js')
     };
 
     var renderFeatures = function(features) {
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
     var wrap = function(renderedFeatures, renderedBuild) {
       var source = grunt.file.read(options.indexTemplate);
       var styles = grunt.file.read(options.css);
-      var script = grunt.file.read(options.javascript);
+      var script = grunt.file.read(options.javascript) + grunt.file.read(options.moment);
       return _.template(source)({features : renderedFeatures, build: renderedBuild, styles : styles, script: script});
     };
   });

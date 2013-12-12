@@ -56,7 +56,7 @@ module.exports = function(grunt) {
 
     cucumber.stderr.on('data', function (data) {
       var stderr = new Buffer(data);
-      grunt.log.error(sterr.toString());
+      grunt.log.error(stderr.toString());
     });
 
     cucumber.on('close', function (code) {

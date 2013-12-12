@@ -5,6 +5,7 @@
     <style type="text/css">
       <%= styles %>
     </style>
+    <script src="moment.min.js"></script>
     <script>
       <%= script %>
     </script>
@@ -16,14 +17,10 @@
           <h1 class="subheader">Glos API </h1>
           <h4 class="subheader">Feature tests</h4>
         </div>
-        <div class="large-6 columns right-col">
-          <h1 id="appVersion" class="subheader"></h1>
-          <h4 id="since" class="subheader"></h4>
-        </div>
+        <%= build %>
       </div>
     </header>
     <br /><br />
-
     <%= features %>
   </body>
 </html>

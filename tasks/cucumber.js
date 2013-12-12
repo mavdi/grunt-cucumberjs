@@ -12,6 +12,8 @@
 
 module.exports = function(grunt) {
 
+  var version = grunt.file.readJSON('./package.json').version;
+
   grunt.registerTask('cucumberjs', 'Generates documentation from Cucumber features', function() {
     console.log('start');
     var done = this.async();
@@ -22,11 +24,13 @@ module.exports = function(grunt) {
     };
 
     var options = this.options({
+      outputPath: './',
       format: 'html',
       css: 'node_modules/grunt-cucumberjs/templates/foundation/styles.css',
       javascript: 'node_modules/grunt-cucumberjs/templates/foundation/script.js',
       indexTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/index.tmpl',
-      featuresTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/features.tmpl'
+      featuresTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/features.tmpl',
+      buildTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/build.tmpl'
     });
     var config = grunt.config.get('cucumberjs');
 
@@ -61,25 +65,21 @@ module.exports = function(grunt) {
         (config.format === 'html') ? publish(JSON.parse(stdout)) : grunt.log.write(stdout);
         return done(false);
       }
-      if(config.format === 'html') {
-        publish(JSON.parse(stdout));
-        return done();
-      }
-
-      if(options.output) {
-        grunt.file.write(options.output, stdout);
-        return done();
-      }
-
-      grunt.log.write(stdout);
+      
+      publish(JSON.parse(stdout));
       return done();
     });
 
     var publish = function(features) {
-      var rendered = renderFeatures(features);
-      var wrapped = wrap(rendered);
+      var renderedFeatures = renderFeatures(features);
+      var renderedBuild = renderBuild({
+        version: version,
+        time: new Date()
+      });
+      var wrapped = wrap(renderedFeatures, renderedBuild);
 
-      grunt.file.write(options.output || 'output.html', wrapped);
+      grunt.file.write(options.outputPath + '/report.' + options.format, wrapped);
+      grunt.file.copy('node_modules/grunt-cucumberjs/templates/foundation/moment.min.js', options.outputPath + '/moment.min.js')
     };
 
     var renderFeatures = function(features) {
@@ -87,11 +87,16 @@ module.exports = function(grunt) {
       return _.template(source)({features : features, _ : _ });
     };
 
-    var wrap = function(rendered) {
+    var renderBuild = function(build) {
+      var source = grunt.file.read(options.buildTemplate);
+      return _.template(source)({build : build });
+    };
+
+    var wrap = function(renderedFeatures, renderedBuild) {
       var source = grunt.file.read(options.indexTemplate);
       var styles = grunt.file.read(options.css);
       var script = grunt.file.read(options.javascript);
-      return _.template(source)({features : rendered, styles : styles, script: script});
+      return _.template(source)({features : renderedFeatures, build: renderedBuild, styles : styles, script: script});
     };
   });
 

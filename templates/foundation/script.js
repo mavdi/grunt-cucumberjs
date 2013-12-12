@@ -20,16 +20,9 @@ window.onload = function() {
     }
   });
 
-  //  Get app version
-  var oReq = new XMLHttpRequest();
-  oReq.onload = function() {
-    var response = JSON.parse(this.responseText);
-
-    document.getElementById("appVersion").innerHTML = response.version;
-    document.getElementById("since").innerHTML = "Built " + response.since;
-  }
-  oReq.open("get", "build", true);
-  oReq.send();
+  //  Update build time to since
+  var buildTimeElem = document.getElementById("buildTime");
+  buildTimeElem.innerHTML = 'Built ' + moment(buildTimeElem.innerHTML).fromNow();
 };
 
 /* 

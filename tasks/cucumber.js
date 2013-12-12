@@ -1,6 +1,6 @@
 /*
- * grunt-cudoc
- * https://github.com/mavdi/cudoc
+ * grunt-cucumberjs
+ * https://github.com/mavdi/grunt-cucumberjs
  *
  * Copyright (c) 2013 Mehdi Avdi
  * Licensed under the MIT license.
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     });
     var config = grunt.config.get('cucumberjs');
 
-    var exec = require('child_process').exec;
+    var spawn = require('child_process').spawn;
     var _ = require('underscore');
 
     var commands = [];
@@ -42,11 +42,23 @@ module.exports = function(grunt) {
     } else if(config.format === 'html') {
       commands.push('-f', 'json');
     }
+    var buffer  = [];
+    var cucumber = spawn('./node_modules/.bin/cucumber-js', commands);
 
-    exec('./node_modules/.bin/cucumber-js ' + commands.join(' '), function(error, stdout, stderr){
-      if(error) {
+    cucumber.stdout.on('data', function(data) {
+      buffer.push(data);
+    });
+
+    cucumber.stderr.on('data', function (data) {
+      var stderr = new Buffer(data);
+      grunt.log.error(sterr.toString());
+    });
+
+    cucumber.on('close', function (code) {
+      var stdout = Buffer.concat(buffer);
+      if(code != 0) {
         grunt.log.error('failed tests, please see the output');
-        if(config.format === 'html') publish(JSON.parse(stdout));
+        (config.format === 'html') ? publish(JSON.parse(stdout)) : grunt.log.write(stdout);
         return done(false);
       }
       if(config.format === 'html') {

@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     };
 
     var options = this.options({
-      outputPath: './',
+      output: 'features_report.html',
       format: 'html',
       css: 'node_modules/grunt-cucumberjs/templates/foundation/styles.css',
       javascript: 'node_modules/grunt-cucumberjs/templates/foundation/script.js',
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
         (config.format === 'html') ? publish(JSON.parse(stdout)) : grunt.log.write(stdout);
         return done(false);
       }
-      
+
       publish(JSON.parse(stdout));
       return done();
     });
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
       });
       var wrapped = wrap(renderedFeatures, renderedBuild);
 
-      grunt.file.write(options.outputPath + '/report.' + options.format, wrapped);
+      grunt.file.write(options.output, wrapped);
     };
 
     var renderFeatures = function(features) {

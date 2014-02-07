@@ -33,6 +33,15 @@ grunt.initConfig({
 })
 ```
 
+##Usage
+```bash
+#runs all features
+$ grunt cucumberjs 
+
+#run specific features
+$ grunt cucumberjs --features=features/myFeature.feature 
+```
+
 ### Options
 
 #### options.steps

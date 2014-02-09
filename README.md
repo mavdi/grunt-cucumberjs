@@ -26,7 +26,7 @@ In your project's Gruntfile, add a section named `cucumberjs` to the data object
 grunt.initConfig({
   cucumberjs: {
       options: {
-        output: 'output.html'
+        output: 'my_report.html'
       },
       format: 'html'
     },
@@ -76,13 +76,13 @@ Location of the html temoplate to be used when running each test. See ```templat
 
 #### options.output
 Type: `String`
-Default value: `''`
+Default value: `'features_report.html'`
 
 Output file for the task. Please also include the appripriate extension. For example use ```js``` for ```json``` format.
 
 #### format
 Type: `String`
-Default value: `''`
+Default value: `'html'`
 
 output format for the tests. The options are ```pretty```, ```progress```, ```json```, ```summary``` and ```html```.
 

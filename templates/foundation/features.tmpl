@@ -11,23 +11,36 @@
           <p class="title accordion-title" data-section-title><a href="#"><spa><%= element.keyword %>: </span><%= element.name %> 
             <% if(_.some(element.steps, function(step){ return step.result.status === 'failed'; })) {  %>
               <span class="alert label right">Failed</span>
+            <% } else if(_.some(element.steps, function(step){ return step.result.status === 'undefined'; })) {  %>
+              <span class="label right">Skipped</span>
             <% } else { %>
               <span class="success label right">Success</span>
             <% } %>
           </a>
           </p>
+
           <div class="content" data-section-content>
             <% _.each(element.steps, function(step) { %> 
+
               <p class="subheader">
                 <span class="text"><span class="keyword highlight"><%= step.keyword %></span> <%= step.name %></span>
                 <small>
                 <% if(step.result.status === 'failed') { %>
                   <span class="alert label right">Failed</span>
+                <% } else if(step.result.status === 'skipped') { %>
+                  <span class="label right">Skipped</span>
+                <% } else if(step.result.status === 'undefined') { %>
+                  <span class="label right">undefined</span>
                 <% } else { %>
                   <span class="success label right">Success</span>
                 <% } %>
                 </small>
               </p>              
+
+              <% if (step.result.error_message) { %>
+                <span class="text"><%= step.result.error_message %></span>
+              <% } %>
+
             <% }); %>
           </div>
         </section> 

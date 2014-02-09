@@ -66,7 +66,7 @@ module.exports = function(grunt) {
         (config.format === 'html') ? publish(JSON.parse(stdout)) : grunt.log.write(stdout);
         return done(false);
       }
-      
+
       publish(JSON.parse(stdout));
       return done();
     });

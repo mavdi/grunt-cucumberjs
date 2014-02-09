@@ -47,6 +47,11 @@ module.exports = function(grunt) {
     } else if(config.format === 'html') {
       commands.push('-f', 'json');
     }
+
+    if (grunt.option('features')) {
+      commands.push(grunt.option('features'));
+    }
+
     var buffer  = [];
     var cucumber = spawn('./node_modules/.bin/cucumber-js', commands);
 

@@ -15,7 +15,6 @@ module.exports = function(grunt) {
   var version = grunt.file.readJSON('./package.json').version;
 
   grunt.registerTask('cucumberjs', 'Generates documentation from Cucumber features', function() {
-    console.log('start');
     var done = this.async();
 
     var fileTypes = {
@@ -48,8 +47,13 @@ module.exports = function(grunt) {
       commands.push('-f', 'json');
     }
 
-    if (grunt.option('features')) {
-      commands.push(grunt.option('features'));
+    var features = grunt.option('features') || config.features;
+
+    if (features) {
+      commands.push(features);
+      grunt.log.writeln('Running ' + features);
+    } else {
+      grunt.log.writeln('Running all features');
     }
 
     var buffer  = [];

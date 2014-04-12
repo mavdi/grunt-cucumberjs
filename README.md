@@ -87,3 +87,10 @@ Default value: `'html'`
 output format for the tests. The options are ```pretty```, ```progress```, ```json```, ```summary``` and ```html```.
 
 ```html``` will output a pretty report of your tests. You can use your own templates with this.
+
+#### features
+Type: `String`
+Default value: `''`
+Example: `'features/awesomeFeature.feature'`
+
+Run a specific feature

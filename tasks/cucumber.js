@@ -13,9 +13,10 @@
 module.exports = function(grunt) {
 
   var version = grunt.file.readJSON('./package.json').version;
+  var spawn = require('child_process').spawn;
+  var _ = require('underscore');
 
   grunt.registerTask('cucumberjs', 'Generates documentation from Cucumber features', function() {
-    console.log('start');
     var done = this.async();
 
     var fileTypes = {
@@ -33,19 +34,23 @@ module.exports = function(grunt) {
       featuresTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/features.tmpl',
       buildTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/build.tmpl'
     });
-    var config = grunt.config.get('cucumberjs');
 
-    var spawn = require('child_process').spawn;
-    var _ = require('underscore');
+    _.extend(options, grunt.config.get('cucumberjs').options);
 
     var commands = [];
 
-    if(options.steps) commands.push('-r', options.steps);
-    if(options.tags) commands.push('-t', options.tags);
-    if(config.format && config.format !== 'html') {
-      commands.push('-f', config.format);
-    } else if(config.format === 'html') {
+    if (options.steps) {
+      commands.push('-r', options.steps);
+    }
+
+    if (options.tags) {
+      commands.push('-t', options.tags);
+    }
+
+    if (options.format === 'html') {
       commands.push('-f', 'json');
+    } else {
+      commands.push('-f', options.format);
     }
 
     if (grunt.option('features')) {

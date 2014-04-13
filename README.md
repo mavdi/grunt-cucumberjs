@@ -25,11 +25,11 @@ In your project's Gruntfile, add a section named `cucumberjs` to the data object
 ```js
 grunt.initConfig({
   cucumberjs: {
-      options: {
-        output: 'my_report.html'
-      },
-      format: 'html'
-    },
+    options: {
+      format: 'html',
+      output: 'my_report.html'
+    }
+  }
 })
 ```
 
@@ -80,7 +80,7 @@ Default value: `'features_report.html'`
 
 Output file for the task. Please also include the appripriate extension. For example use ```js``` for ```json``` format.
 
-#### format
+#### options.format
 Type: `String`
 Default value: `'html'`
 

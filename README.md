@@ -28,7 +28,13 @@ grunt.initConfig({
     options: {
       format: 'html',
       output: 'my_report.html'
-    }
+    },
+    my_features: ['features/feature1.feature', 'features/feature2.feature'],
+    other_features: {
+      options: {
+        output: 'other_report.html'
+      },
+      src: ['other_features/feature1.feature', 'other_features/feature2.feature']
   }
 })
 ```

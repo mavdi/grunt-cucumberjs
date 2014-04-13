@@ -16,7 +16,7 @@ module.exports = function(grunt) {
   var spawn = require('child_process').spawn;
   var _ = require('underscore');
 
-  grunt.registerTask('cucumberjs', 'Generates documentation from Cucumber features', function() {
+  grunt.registerMultiTask('cucumberjs', 'Run cucumber.js features', function() {
     var done = this.async();
 
     var fileTypes = {
@@ -35,7 +35,6 @@ module.exports = function(grunt) {
       buildTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/build.tmpl'
     });
 
-    _.extend(options, grunt.config.get('cucumberjs').options);
 
     var commands = [];
 
@@ -55,6 +54,17 @@ module.exports = function(grunt) {
 
     if (grunt.option('features')) {
       commands.push(grunt.option('features'));
+    } else {
+      this.files.forEach(function(f) {
+        f.src.forEach(function(filepath) {
+          if (!grunt.file.exists(filepath)) {
+            grunt.log.warn('Source file "' + filepath + '" not found.');
+            return;
+          }
+
+          commands.push(filepath);
+        });
+      });
     }
 
     var buffer  = [];
@@ -71,9 +81,15 @@ module.exports = function(grunt) {
 
     cucumber.on('close', function (code) {
       var stdout = Buffer.concat(buffer);
-      if(code != 0) {
+      if (code !== 0) {
         grunt.log.error('failed tests, please see the output');
-        (config.format === 'html') ? publish(JSON.parse(stdout)) : grunt.log.write(stdout);
+
+        if (options.format === 'html')  {
+          publish(JSON.parse(stdout));
+        } else {
+          grunt.log.write(stdout);
+        }
+
         return done(false);
       }
 
@@ -90,6 +106,7 @@ module.exports = function(grunt) {
       var wrapped = wrap(renderedFeatures, renderedBuild);
 
       grunt.file.write(options.output, wrapped);
+      grunt.log.writeln('Generated ' + options.output + ' successfully.');
     };
 
     var renderFeatures = function(features) {

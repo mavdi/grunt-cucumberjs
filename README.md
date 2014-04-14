@@ -1,6 +1,6 @@
 # grunt-cucumberjs
 
-> Generates documentation from Cucumber features
+> Runs cucumberjs features and output results in various formats including html.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -27,7 +27,8 @@ grunt.initConfig({
   cucumberjs: {
     options: {
       format: 'html',
-      output: 'my_report.html'
+      output: 'my_report.html',
+      theme: 'bootstrap'
     },
     my_features: ['features/feature1.feature', 'features/feature2.feature'],
     other_features: {
@@ -35,13 +36,14 @@ grunt.initConfig({
         output: 'other_report.html'
       },
       src: ['other_features/feature1.feature', 'other_features/feature2.feature']
+    }
   }
-})
+});
 ```
 
-##Usage
+### Usage
 ```bash
-#runs all features
+#runs all features specified in task
 $ grunt cucumberjs 
 
 #run specific features
@@ -52,44 +54,39 @@ $ grunt cucumberjs --features=features/myFeature.feature
 
 #### options.steps
 Type: `String`
-Default value: `''`
+Default: `''`
 
 passes the value as ```--steps``` parameter to cucumber.
 
 #### options.tags
 Type: `String`
-Default value: `''`
+Default: `''`
 
 passes the value as ```--tags``` parameter to cucumber.
 
-#### options.css
+#### options.theme
 Type: `String`
-Default value: `''`
+Default: `'foundation'`
+Available: `['foundation', 'bootstrap', 'simple']`
 
-Location of the CSS styles to be used by the html report wrapper. See ```templates/``` for details.
+Specifies which theme to use for the html report
 
-#### options.indexTemplate
+#### options.templateDir
 Type: `String`
-Default value: `''`
+Default: `'features/templates'`
 
-Location of html report wrapper. See ```templates/``` for details.
-
-#### options.featuresTemplate
-Type: `String`
-Default value: `''`
-
-Location of the html temoplate to be used when running each test. See ```templates/``` for details.
+Location of your custom templates. Simply name the template the same as the one you are trying to override and 
+grunt-cucumberjs will use it over the default template
 
 #### options.output
 Type: `String`
-Default value: `'features_report.html'`
+Default: `'features_report.html'`
 
-Output file for the task. Please also include the appripriate extension. For example use ```js``` for ```json``` format.
+Report output location. Please also include the appropriate extension. For example use ```js``` for ```json``` format.
 
 #### options.format
 Type: `String`
-Default value: `'html'`
+Default: `'html'`
+Available: `['pretty', 'progress', 'json', 'summary', 'html']`
 
-output format for the tests. The options are ```pretty```, ```progress```, ```json```, ```summary``` and ```html```.
-
-```html``` will output a pretty report of your tests. You can use your own templates with this.
+The output format for the tests. 

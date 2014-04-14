@@ -6,35 +6,24 @@
  * Licensed under the MIT license.
  */
 
-/*jshint curly: false */
-
 'use strict';
 
 module.exports = function(grunt) {
 
   var version = grunt.file.readJSON('./package.json').version;
+  var projectPkg = grunt.file.readJSON('package.json');
   var spawn = require('child_process').spawn;
   var _ = require('underscore');
 
   grunt.registerMultiTask('cucumberjs', 'Run cucumber.js features', function() {
     var done = this.async();
 
-    var fileTypes = {
-      html : 'html',
-      json : 'js'
-    };
-
     var options = this.options({
       output: 'features_report.html',
       format: 'html',
-      css: 'node_modules/grunt-cucumberjs/templates/foundation/styles.css',
-      javascript: 'node_modules/grunt-cucumberjs/templates/foundation/script.js',
-      moment: 'node_modules/grunt-cucumberjs/templates/foundation/moment.min.js',
-      indexTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/index.tmpl',
-      featuresTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/features.tmpl',
-      buildTemplate : 'node_modules/grunt-cucumberjs/templates/foundation/build.tmpl'
+      theme: 'foundation',
+      templateDir: 'features/templates'
     });
-
 
     var commands = [];
 
@@ -71,7 +60,11 @@ module.exports = function(grunt) {
     var cucumber = spawn('./node_modules/.bin/cucumber-js', commands);
 
     cucumber.stdout.on('data', function(data) {
-      buffer.push(data);
+      if (options.format === 'html') {
+        buffer.push(data);
+      } else {
+        grunt.log.write(data);
+      }
     });
 
     cucumber.stderr.on('data', function (data) {
@@ -80,51 +73,112 @@ module.exports = function(grunt) {
     });
 
     cucumber.on('close', function (code) {
-      var stdout = Buffer.concat(buffer);
+      if (options.format === 'html') {
+        generateReport(JSON.parse(Buffer.concat(buffer)));
+      }
+
       if (code !== 0) {
         grunt.log.error('failed tests, please see the output');
 
-        if (options.format === 'html')  {
-          publish(JSON.parse(stdout));
-        } else {
-          grunt.log.write(stdout);
-        }
-
         return done(false);
+      } else {
+        return done();
       }
-
-      publish(JSON.parse(stdout));
-      return done();
     });
 
-    var publish = function(features) {
-      var renderedFeatures = renderFeatures(features);
-      var renderedBuild = renderBuild({
-        version: version,
-        time: new Date()
-      });
-      var wrapped = wrap(renderedFeatures, renderedBuild);
+    /**
+     * Adds passed/failed properties on features/scenarios
+     *
+     * @param {object} suite The test suite object
+     */
+    var setStats = function(suite) {
+      var features = suite.features;
 
-      grunt.file.write(options.output, wrapped);
+      for (var i=0; i<features.length; i++) {
+        features[i].passed = 0;
+        features[i].failed = 0;
+
+        for (var j=0; j<features[i].elements.length; j++) {
+          features[i].elements[j].passed = 0;
+          features[i].elements[j].failed = 0;
+          features[i].elements[j].notdefined = 0;
+          features[i].elements[j].skipped = 0;
+          for (var k=0; k<features[i].elements[j].steps.length; k++) {
+            if (features[i].elements[j].steps[k].result.status === 'passed') {
+              features[i].elements[j].passed += 1;
+            } else if (features[i].elements[j].steps[k].result.status === 'failed') {
+              features[i].elements[j].failed += 1;
+            } else if (features[i].elements[j].steps[k].result.status === 'undefined') {
+              features[i].elements[j].notdefined += 1;
+            } else {
+              features[i].elements[j].skipped += 1;
+            }
+          }
+
+          if (features[i].elements[j].failed > 0) {
+            features[i].failed += 1;
+          } else {
+            features[i].passed += 1;
+          }
+        }
+
+        if (features[i].failed > 0) {
+          suite.failed += 1;
+        } else {
+          suite.passed += 1;
+        }
+      }
+
+      suite.features = features;
+
+      return suite;
+    };
+
+    /**
+     * Returns the path of a template
+     *
+     * @param {string} name The template name
+     */
+    var getPath = function(name) {
+      var path = 'node_modules/grunt-cucumberjs/templates/' + options.theme + '/' + name;
+
+      // return the users custom template if it has been defined
+      if (grunt.file.exists(options.templateDir + '/' + name)) {
+        path = options.templateDir + '/' + name;
+      }
+
+      return path;
+    };
+
+    /**
+     * Generate html report
+     *
+     * @param {object} features Features result object
+     */
+    var generateReport = function(features) {
+      var suite = {
+        name: projectPkg.name,
+        features: features,
+        passed: 0,
+        failed: 0
+      };
+
+      suite = setStats(suite);
+
+      grunt.file.write(
+        options.output,
+        _.template(grunt.file.read(getPath('index.tmpl')))({
+          suite: suite,
+          version: version,
+          time: new Date(),
+          features: _.template(grunt.file.read(getPath('features.tmpl')))({suite : suite, _ : _ }),
+          styles: grunt.file.read(getPath('style.css')),
+          script: grunt.file.read(getPath('script.js'))
+        })
+      );
+
       grunt.log.writeln('Generated ' + options.output + ' successfully.');
     };
 
-    var renderFeatures = function(features) {
-      var source = grunt.file.read(options.featuresTemplate);
-      return _.template(source)({features : features, _ : _ });
-    };
-
-    var renderBuild = function(build) {
-      var source = grunt.file.read(options.buildTemplate);
-      return _.template(source)({build : build });
-    };
-
-    var wrap = function(renderedFeatures, renderedBuild) {
-      var source = grunt.file.read(options.indexTemplate);
-      var styles = grunt.file.read(options.css);
-      var script = grunt.file.read(options.javascript) + grunt.file.read(options.moment);
-      return _.template(source)({features : renderedFeatures, build: renderedBuild, styles : styles, script: script});
-    };
   });
-
 };

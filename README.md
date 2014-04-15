@@ -41,6 +41,8 @@ grunt.initConfig({
 });
 ```
 
+If you want all your feature files to be included in the report, simply don't specify any features.
+
 ### Usage
 ```bash
 #runs all features specified in task

@@ -74,6 +74,8 @@ module.exports = function(grunt) {
 
     cucumber.on('close', function (code) {
       if (options.format === 'html') {
+        var featureJsonOutput;
+
         var output = Buffer.concat(buffer).toString();
 
         var featureStartIndex = output.substring(0, output.indexOf('"keyword": "Feature"')).lastIndexOf('[');
@@ -82,7 +84,15 @@ module.exports = function(grunt) {
 
         var featureOutput = output.substring(featureStartIndex);
 
-        generateReport(JSON.parse(featureOutput), logOutput);
+        try {
+          featureJsonOutput = JSON.parse(featureOutput);
+        } catch (e) {
+          grunt.log.error('Unable to parse cucumberjs output into json.');
+
+          return done(false);
+        }
+
+        generateReport(featureJsonOutput, logOutput);
       }
 
       if (code !== 0) {

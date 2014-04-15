@@ -22,8 +22,16 @@ module.exports = function(grunt) {
       output: 'features_report.html',
       format: 'html',
       theme: 'foundation',
-      templateDir: 'features/templates'
+      templateDir: 'features/templates',
+      tags: ''
     });
+
+    // resolve options set via cli
+    for (var key in options) {
+      if (grunt.option(key)) {
+        options[key] = grunt.option(key);
+      }
+    }
 
     var commands = [];
 

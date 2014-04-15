@@ -112,40 +112,33 @@ module.exports = function(grunt) {
     var setStats = function(suite) {
       var features = suite.features;
 
-      for (var i=0; i<features.length; i++) {
-        features[i].passed = 0;
-        features[i].failed = 0;
+      features.forEach(function(feature) {
+        feature.passed = 0;
+        feature.failed = 0;
 
-        for (var j=0; j<features[i].elements.length; j++) {
-          features[i].elements[j].passed = 0;
-          features[i].elements[j].failed = 0;
-          features[i].elements[j].notdefined = 0;
-          features[i].elements[j].skipped = 0;
-          for (var k=0; k<features[i].elements[j].steps.length; k++) {
-            if (features[i].elements[j].steps[k].result.status === 'passed') {
-              features[i].elements[j].passed += 1;
-            } else if (features[i].elements[j].steps[k].result.status === 'failed') {
-              features[i].elements[j].failed += 1;
-            } else if (features[i].elements[j].steps[k].result.status === 'undefined') {
-              features[i].elements[j].notdefined += 1;
-            } else {
-              features[i].elements[j].skipped += 1;
-            }
-          }
+        if(!feature.elements) return;
 
-          if (features[i].elements[j].failed > 0) {
-            features[i].failed += 1;
-          } else {
-            features[i].passed += 1;
-          }
-        }
+        feature.elements.forEach(function(element) {
+          element.passed = 0;
+          element.failed = 0;
+          element.notdefined = 0;
+          element.skipped = 0;
 
-        if (features[i].failed > 0) {
-          suite.failed += 1;
-        } else {
-          suite.passed += 1;
-        }
-      }
+          element.steps.forEach(function(step) {
+            if(step.result.status === 'passed') return element.passed++;
+            if(step.result.status === 'failed') return element.failed++;
+            if(step.result.status === 'undefined') return element.notdefined++;
+
+            element.skipped ++;
+          });
+
+          if(element.failed > 0) return feature.failed++;
+          feature.passed++;
+        });
+
+        if(feature.failed > 0) return suite.failed++;
+        suite.passed++;
+      });
 
       suite.features = features;
 

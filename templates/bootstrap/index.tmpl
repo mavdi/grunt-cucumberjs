@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cucumber Feature Tests</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <style type="text/css">
+      <%= styles %>
+    </style>
+  </head>
+  <body>
+
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Cucumberjs Report</a>
+          <div class="project-name visible-md visible-lg"><%= suite.name %></div>
+          <div class="label-container">
+            <span class="label label-success">Passed: <%= suite.passed %></span>
+            <span class="label label-danger">Failed: <%= suite.failed %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="generated-on"><%= suite.time %></div>
+
+      <% if (suite.logOutput) { %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#logOutput">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+                <i class="glyphicon glyphicon-chevron-down"></i>
+                <b>Console Output</b>
+              </a>
+            </h4>
+          </div>
+          <div id="logOutput" class="panel-collapse collapse">
+            <div class="panel-body">
+              <pre>
+<%= suite.logOutput %>
+              </pre>
+            </div>
+          </div>
+        </div>
+      <% } %>
+
+      <%= features %>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script>
+      <%= script %>
+    </script>
+  </body>
+</html>

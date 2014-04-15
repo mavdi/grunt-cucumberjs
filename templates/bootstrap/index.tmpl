@@ -26,6 +26,27 @@
 
       <div class="generated-on"><%= suite.time %></div>
 
+      <% if (suite.logOutput) { %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#logOutput">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+                <i class="glyphicon glyphicon-chevron-down"></i>
+                <b>Console Output</b>
+              </a>
+            </h4>
+          </div>
+          <div id="logOutput" class="panel-collapse collapse">
+            <div class="panel-body">
+              <pre>
+<%= suite.logOutput %>
+              </pre>
+            </div>
+          </div>
+        </div>
+      <% } %>
+
       <%= features %>
 
     </div>

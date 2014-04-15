@@ -74,7 +74,15 @@ module.exports = function(grunt) {
 
     cucumber.on('close', function (code) {
       if (options.format === 'html') {
-        generateReport(JSON.parse(Buffer.concat(buffer)));
+        var output = Buffer.concat(buffer).toString();
+
+        var featureStartIndex = output.substring(0, output.indexOf('"keyword": "Feature"')).lastIndexOf('[');
+
+        var logOutput = output.substring(0, featureStartIndex - 1);
+
+        var featureOutput = output.substring(featureStartIndex);
+
+        generateReport(JSON.parse(featureOutput), logOutput);
       }
 
       if (code !== 0) {
@@ -153,14 +161,16 @@ module.exports = function(grunt) {
     /**
      * Generate html report
      *
-     * @param {object} features Features result object
+     * @param {object} featureOutput Features result object
+     * @param {string} logOutput Contains any console statements captured during the test run
      */
-    var generateReport = function(features) {
+    var generateReport = function(featureOutput, logOutput) {
       var suite = {
         name: projectPkg.name,
-        features: features,
+        features: featureOutput,
         passed: 0,
-        failed: 0
+        failed: 0,
+        logOutput: logOutput
       };
 
       suite = setStats(suite);
@@ -179,6 +189,5 @@ module.exports = function(grunt) {
 
       grunt.log.writeln('Generated ' + options.output + ' successfully.');
     };
-
   });
 };

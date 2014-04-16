@@ -48,8 +48,8 @@ If you want all your feature files to be included in the report, simply don't sp
 #runs all features specified in task
 $ grunt cucumberjs 
 
-#run specific features
-$ grunt cucumberjs --features=features/myFeature.feature 
+#you can override options via the cli 
+$ grunt cucumberjs --features=features/myFeature.feature --format=pretty
 ```
 
 ### Options

@@ -41,14 +41,25 @@ grunt.initConfig({
 });
 ```
 
-If you want all your feature files to be included in the report, simply don't specify any features.
+If all your feature files are located in the default location of ```features/``` then just leave the feature configuation as an empty array. See following:
+
+```
+cucumberjs: {
+  options: {
+    format: 'html',
+    output: './public/report.html',
+    theme: 'foundation'
+  },
+  features : []
+}
+```
 
 ### Usage
 ```bash
 #runs all features specified in task
-$ grunt cucumberjs 
+$ grunt cucumberjs
 
-#you can override options via the cli 
+#you can override options via the cli
 $ grunt cucumberjs --features=features/myFeature.feature --format=pretty
 ```
 
@@ -77,7 +88,7 @@ Specifies which theme to use for the html report
 Type: `String`
 Default: `'features/templates'`
 
-Location of your custom templates. Simply name the template the same as the one you are trying to override and 
+Location of your custom templates. Simply name the template the same as the one you are trying to override and
 grunt-cucumberjs will use it over the default template
 
 #### options.output
@@ -91,4 +102,4 @@ Type: `String`
 Default: `'html'`
 Available: `['pretty', 'progress', 'json', 'summary', 'html']`
 
-The output format for the tests. 
+The output format for the tests.

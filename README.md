@@ -95,7 +95,6 @@ grunt-cucumberjs will use it over the default template
 Type: `String`
 Default: `'features_report.html'`
 
-Report output location. Please also include the appropriate extension. For example use ```js``` for ```json``` format.
 
 #### options.format
 Type: `String`

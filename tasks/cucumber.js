@@ -21,6 +21,7 @@ module.exports = function(grunt) {
     var options = this.options({
       output: 'features_report.html',
       format: 'html',
+      saveJson: false,
       theme: 'foundation',
       templateDir: 'features/templates',
       tags: ''
@@ -186,6 +187,9 @@ module.exports = function(grunt) {
 
       suite = setStats(suite);
 
+      if (options.saveJson) {
+        grunt.file.write(options.output+'.json', JSON.stringify(featureOutput, null, '\t'));
+      }
       grunt.file.write(
         options.output,
         _.template(grunt.file.read(getPath('index.tmpl')))({

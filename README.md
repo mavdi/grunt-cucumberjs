@@ -100,6 +100,12 @@ Report output location. Please also include the appropriate extension. For examp
 #### options.format
 Type: `String`
 Default: `'html'`
-Available: `['pretty', 'progress', 'json', 'summary', 'html']`
+Available: `['pretty', 'progress', 'summary', 'html']`
 
-The output format for the tests.
+#### options.saveJson
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+To keep or not the generated json file, applicable for options.format = html only.
+It will be saved as options.output + '.json'

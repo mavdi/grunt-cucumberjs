@@ -65,7 +65,12 @@ module.exports = function(grunt) {
     }
 
     var buffer  = [];
-    var cucumber = spawn('./node_modules/.bin/cucumber-js', commands);
+    var cucumber;
+    if (process.platform === 'win32') {
+      cucumber = spawn('.\\node_modules\\.bin\\cucumber-js.cmd', commands);
+    } else {
+      cucumber = spawn('./node_modules/.bin/cucumber-js', commands);
+    }
 
     cucumber.stdout.on('data', function(data) {
       if (options.format === 'html') {

@@ -95,11 +95,16 @@ grunt-cucumberjs will use it over the default template
 Type: `String`
 Default: `'features_report.html'`
 
-Report output location. Please also include the appropriate extension. For example use ```js``` for ```json``` format.
 
 #### options.format
 Type: `String`
 Default: `'html'`
-Available: `['pretty', 'progress', 'json', 'summary', 'html']`
+Available: `['pretty', 'progress', 'summary', 'html']`
 
-The output format for the tests.
+#### options.saveJson
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+To keep or not the generated json file, applicable for options.format = html only.
+It will be saved as options.output + '.json'

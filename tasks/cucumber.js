@@ -1,10 +1,10 @@
 /*
- * grunt-cucumberjs
- * https://github.com/mavdi/grunt-cucumberjs
- *
- * Copyright (c) 2013 Mehdi Avdi
- * Licensed under the MIT license.
- */
+* grunt-cucumberjs
+* https://github.com/mavdi/grunt-cucumberjs
+*
+* Copyright (c) 2013 Mehdi Avdi
+* Licensed under the MIT license.
+*/
 
 'use strict';
 
@@ -21,6 +21,7 @@ module.exports = function(grunt) {
     var options = this.options({
       output: 'features_report.html',
       format: 'html',
+      saveJson: false,
       theme: 'foundation',
       templateDir: 'features/templates',
       tags: ''
@@ -118,10 +119,10 @@ module.exports = function(grunt) {
     });
 
     /**
-     * Adds passed/failed properties on features/scenarios
-     *
-     * @param {object} suite The test suite object
-     */
+    * Adds passed/failed properties on features/scenarios
+    *
+    * @param {object} suite The test suite object
+    */
     var setStats = function(suite) {
       var features = suite.features;
 
@@ -129,7 +130,9 @@ module.exports = function(grunt) {
         feature.passed = 0;
         feature.failed = 0;
 
-        if(!feature.elements) return;
+        if(!feature.elements) {
+          return;
+        }
 
         feature.elements.forEach(function(element) {
           element.passed = 0;
@@ -138,18 +141,28 @@ module.exports = function(grunt) {
           element.skipped = 0;
 
           element.steps.forEach(function(step) {
-            if(step.result.status === 'passed') return element.passed++;
-            if(step.result.status === 'failed') return element.failed++;
-            if(step.result.status === 'undefined') return element.notdefined++;
+            if(step.result.status === 'passed') {
+              return element.passed++;
+            }
+            if(step.result.status === 'failed') {
+              return element.failed++;
+            }
+            if(step.result.status === 'undefined') {
+              return element.notdefined++;
+            }
 
             element.skipped ++;
           });
 
-          if(element.failed > 0) return feature.failed++;
+          if(element.failed > 0) {
+            return feature.failed++;
+          }
           feature.passed++;
         });
 
-        if(feature.failed > 0) return suite.failed++;
+        if(feature.failed > 0) {
+          return suite.failed++;
+        }
         suite.passed++;
       });
 
@@ -159,13 +172,12 @@ module.exports = function(grunt) {
     };
 
     /**
-     * Returns the path of a template
-     *
-     * @param {string} name The template name
-     */
+    * Returns the path of a template
+    *
+    * @param {string} name The template name
+    */
     var getPath = function(name) {
       var path = 'node_modules/grunt-cucumberjs/templates/' + options.theme + '/' + name;
-
       // return the users custom template if it has been defined
       if (grunt.file.exists(options.templateDir + '/' + name)) {
         path = options.templateDir + '/' + name;
@@ -175,11 +187,11 @@ module.exports = function(grunt) {
     };
 
     /**
-     * Generate html report
-     *
-     * @param {object} featureOutput Features result object
-     * @param {string} logOutput Contains any console statements captured during the test run
-     */
+    * Generate html report
+    *
+    * @param {object} featureOutput Features result object
+    * @param {string} logOutput Contains any console statements captured during the test run
+    */
     var generateReport = function(featureOutput, logOutput) {
       var suite = {
         name: projectPkg.name,
@@ -191,6 +203,9 @@ module.exports = function(grunt) {
 
       suite = setStats(suite);
 
+      if (options.saveJson) {
+        grunt.file.write(options.output+'.json', JSON.stringify(featureOutput, null, '\t'));
+      }
       grunt.file.write(
         options.output,
         _.template(grunt.file.read(getPath('index.tmpl')))({

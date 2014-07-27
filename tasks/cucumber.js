@@ -15,6 +15,9 @@ module.exports = function(grunt) {
   var spawn = require('child_process').spawn;
   var _ = require('underscore');
 
+  var WIN32_BIN_PATH = '.\\node_modules\\.bin\\cucumber-js.cmd';
+  var UNIX_BIN_PATH = './node_modules/cucumber/bin/cucumber.js';
+
   grunt.registerMultiTask('cucumberjs', 'Run cucumber.js features', function() {
     var done = this.async();
 
@@ -67,11 +70,20 @@ module.exports = function(grunt) {
 
     var buffer  = [];
     var cucumber;
+    var binPath = '';
+
     if (process.platform === 'win32') {
-      cucumber = spawn('.\\node_modules\\.bin\\cucumber-js.cmd', commands);
+      binPath = WIN32_BIN_PATH;
     } else {
-      cucumber = spawn('./node_modules/.bin/cucumber-js', commands);
+      binPath = UNIX_BIN_PATH;
     }
+
+    if(!grunt.file.exists(binPath)) {
+      grunt.log.error('cucumberjs binary not found at path ' + binPath + '\n NOTE: You cannot install grunt-cucumberjs without bin links on windows');
+      return done(false);
+    }
+
+    cucumber = spawn(binPath, commands);
 
     cucumber.stdout.on('data', function(data) {
       if (options.format === 'html') {

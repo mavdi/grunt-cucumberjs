@@ -1,6 +1,9 @@
 Feature: Test Feature
   Test Description
 
+  Background: 
+    Given I have a background element
+
   Scenario: Test Scenario 1
     Given I have a test scenario
     And I want to create test a feature

@@ -153,6 +153,9 @@ module.exports = function(grunt) {
           element.skipped = 0;
 
           element.steps.forEach(function(step) {
+            if(!step.result) {
+              return 0;
+            }
             if(step.result.status === 'passed') {
               return element.passed++;
             }

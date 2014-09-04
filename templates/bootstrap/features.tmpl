@@ -40,6 +40,7 @@
                 <div class="panel-body">
                   <% _.each(element.steps, function(step, stepIndex) { %> 
                     <p class="scenario-container">
+                    <% if(step.result) { %>
                       <% if(step.result.status === 'passed') { %>
                         <span class="label label-success" title="Success"><i class="glyphicon glyphicon-ok"></i></span>
                       <% } else if(step.result.status === 'failed') { %>
@@ -49,7 +50,9 @@
                       <% } else { %>
                         <span class="label label-primary" title="Undefined"><i class="glyphicon glyphicon-flash"></i></span>
                       <% } %>
+                    <% } %>
                       <span class="text"><span class="keyword highlight"><%= step.keyword %></span> <%= step.name %></span>
+                    <% if(step.result) { %>
                       <% if(step.result.status === 'undefined') { %>
                         <pre>
 this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function(<% for (var i=1; i<(step.name.split('"').length / 2); i++) { %>arg<%= i %>, <% } %>callback) {
@@ -64,6 +67,7 @@ this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function
                           <%= step.result.error_message %>
                         </div>
                       <% } %>
+                    <% } %>
                     </p>              
                   <% }); %>
                 </div>

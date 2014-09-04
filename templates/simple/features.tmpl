@@ -8,7 +8,10 @@
       <% _.each(element.steps, function(step) { %> 
         <div class="step">
           <p>
-            <span class="text <%= step.result.status %>"><span class="keyword highlight"><%= step.keyword %></span> <%= step.name %></span>
+            <% if(step.result) { %>
+            <span class="text <%= step.result.status %>">
+            <% } %>
+            <span class="keyword highlight"><%= step.keyword %></span> <%= step.name %></span>
           </p>
         </div>
       <% }); %> 

@@ -172,13 +172,17 @@ module.exports = function(grunt) {
           if(element.failed > 0) {
             return feature.failed++;
           }
-          feature.passed++;
+          if (element.passed > 0) {
+            return feature.passed++;
+          }
         });
 
         if(feature.failed > 0) {
           return suite.failed++;
         }
-        suite.passed++;
+        if(feature.passed > 0) {
+          return suite.passed++;
+        }
       });
 
       suite.features = features;

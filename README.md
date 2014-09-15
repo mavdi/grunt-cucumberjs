@@ -72,10 +72,10 @@ Default: `''`
 passes the value as ```--steps``` parameter to cucumber.
 
 #### options.tags
-Type: `String`
+Type: `String|Array`
 Default: `''`
 
-passes the value as ```--tags``` parameter to cucumber.
+Passes the value as ```--tags``` parameter to cucumber. If an array, each item is passed as a separate ```--tags``` parameter.
 
 #### options.theme
 Type: `String`

@@ -86,6 +86,7 @@ module.exports = function(grunt) {
     cucumber = spawn(binPath, commands);
 
     cucumber.stdout.on('data', function(data) {
+      process.stdout.write(data);
       if (options.format === 'html') {
         buffer.push(data);
       } else {
@@ -94,6 +95,7 @@ module.exports = function(grunt) {
     });
 
     cucumber.stderr.on('data', function (data) {
+      process.stdout.write(data);
       var stderr = new Buffer(data);
       grunt.log.error(stderr.toString());
     });

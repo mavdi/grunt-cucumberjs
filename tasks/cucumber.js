@@ -27,7 +27,8 @@ module.exports = function(grunt) {
       saveJson: false,
       theme: 'foundation',
       templateDir: 'features/templates',
-      tags: ''
+      tags: '',
+      debug: false
     });
 
     // resolve options set via cli
@@ -86,8 +87,10 @@ module.exports = function(grunt) {
     cucumber = spawn(binPath, commands);
 
     cucumber.stdout.on('data', function(data) {
-      process.stdout.write(data);
       if (options.format === 'html') {
+        if (options.debug) {
+         process.stdout.write(data);
+        }
         buffer.push(data);
       } else {
         grunt.log.write(data);
@@ -95,7 +98,9 @@ module.exports = function(grunt) {
     });
 
     cucumber.stderr.on('data', function (data) {
-      process.stdout.write(data);
+      if (options.debug) {
+         process.stdout.write(data);
+      }
       var stderr = new Buffer(data);
       grunt.log.error(stderr.toString());
     });

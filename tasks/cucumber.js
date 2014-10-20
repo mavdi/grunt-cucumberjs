@@ -46,7 +46,13 @@ module.exports = function(grunt) {
     }
 
     if (options.tags) {
-      commands.push('-t', options.tags);
+      if (options.tags instanceof Array) {
+        options.tags.forEach(function(element, index, array) {
+          commands.push('-t', element);
+        });
+      } else {
+        commands.push('-t', options.tags);
+      }
     }
 
     if (options.format === 'html') {

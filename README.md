@@ -108,3 +108,10 @@ Available: `['true', 'false']`
 
 To keep or not the generated json file, applicable for options.format = html only.
 It will be saved as options.output + '.json'
+
+#### options.debug
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+A flag to turn console log on or off

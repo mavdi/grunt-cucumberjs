@@ -14,6 +14,7 @@ module.exports = function(grunt) {
   var projectPkg = grunt.file.readJSON('package.json');
   var spawn = require('child_process').spawn;
   var _ = require('underscore');
+  var commondir = require('commondir');
 
   var WIN32_BIN_PATH = '.\\node_modules\\.bin\\cucumber-js.cmd';
   var UNIX_BIN_PATH = './node_modules/cucumber/bin/cucumber.js';
@@ -144,10 +145,12 @@ module.exports = function(grunt) {
     */
     var setStats = function(suite) {
       var features = suite.features;
+      var rootDir = commondir(_.pluck(features, 'uri'));
 
       features.forEach(function(feature) {
         feature.passed = 0;
         feature.failed = 0;
+        feature.relativeFolder = feature.uri.slice(rootDir.length);
 
         if(!feature.elements) {
           return;

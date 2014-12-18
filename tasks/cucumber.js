@@ -61,6 +61,10 @@ module.exports = function(grunt) {
       commands.push('-f', options.format);
     }
 
+    if(grunt.option('require')) {
+      commands.push('--require', grunt.option('require'));
+    }
+
     if (grunt.option('features')) {
       commands.push(grunt.option('features'));
     } else {

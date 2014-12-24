@@ -7,7 +7,7 @@
 */
 
 'use strict';
-
+var fs = require('fs');
 module.exports = function(grunt) {
 
   var version = grunt.file.readJSON('./package.json').version;
@@ -156,7 +156,12 @@ module.exports = function(grunt) {
     var setStats = function(suite) {
       var features = suite.features;
       var rootDir = commondir(_.pluck(features, 'uri'));
-
+      var scrshotDir;
+      if(options.output.lastIndexOf('/')>-1) {
+        scrshotDir  = options.output.substring(0, options.output.lastIndexOf('/')) + '/screenshot/';
+      } else {
+        scrshotDir = 'screenshot/';
+      }
       features.forEach(function(feature) {
         feature.passed = 0;
         feature.failed = 0;
@@ -174,11 +179,15 @@ module.exports = function(grunt) {
 
           element.steps.forEach(function(step) {
             if (step.result.embeddings !== undefined) {
+              if(!fs.existsSync(scrshotDir)){
+                fs.mkdirSync(scrshotDir);
+              }
               var stepData = step.result.embeddings[0],
-                  name= step.name && step.name.split(' ').join('_')|| step.keyword.trim();
-              name = name + Math.round(Math.random() * 10000) + '.png'; //randomize the file name
-              fs.writeFileSync(name, new Buffer(stepData.data, 'base64'));
-              step.image = name;
+                  name= step.name && step.name.split(' ').join('_')|| step.keyword.trim(),
+                  name = name + Math.round(Math.random() * 10000) + '.png', //randomize the file name
+                  filename = scrshotDir + name;
+              fs.writeFileSync(filename, new Buffer(stepData.data, 'base64'));
+              step.image = 'screenshot/'+ name;
             }
             if(!step.result) {
               return 0;

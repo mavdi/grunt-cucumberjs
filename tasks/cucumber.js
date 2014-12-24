@@ -173,6 +173,13 @@ module.exports = function(grunt) {
           element.skipped = 0;
 
           element.steps.forEach(function(step) {
+            if (step.result.embeddings !== undefined) {
+              var stepData = step.result.embeddings[0],
+                  name= step.name && step.name.split(' ').join('_')|| step.keyword.trim();
+              name = name + Math.round(Math.random() * 10000) + '.png'; //randomize the file name
+              fs.writeFileSync(name, new Buffer(stepData.data, 'base64'));
+              step.image = name;
+            }
             if(!step.result) {
               return 0;
             }

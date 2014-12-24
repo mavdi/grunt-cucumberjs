@@ -14,8 +14,8 @@
             <span class="keyword highlight"><%= step.keyword %></span> <%= step.name %></span>
              <% if (step.image) { %>
                    <a class="toggle" href="#">Screenshot -</a>
-                   <a class="screenshot" href="./<%= step.image %>">
-                      <img class="screenshot" style="height:100%;width:100%" id="my_images" src="./<%= step.image %>"/>
+                   <a class="screenshot" href="<%= step.image %>">
+                      <img class="screenshot" style="height:100%;width:100%" id="my_images" src="<%= step.image %>"/>
                    </a>
              <% } %>
           </p>

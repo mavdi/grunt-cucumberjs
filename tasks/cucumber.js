@@ -178,11 +178,11 @@ module.exports = function(grunt) {
           element.skipped = 0;
 
           element.steps.forEach(function(step) {
-            if (step.result.embeddings !== undefined) {
+            if (step.embeddings !== undefined) {
               if(!fs.existsSync(scrshotDir)){
                 fs.mkdirSync(scrshotDir);
               }
-              var stepData = step.result.embeddings[0],
+              var stepData = step.embeddings[0],
                   name= step.name && step.name.split(' ').join('_')|| step.keyword.trim(),
                   name = name + Math.round(Math.random() * 10000) + '.png', //randomize the file name
                   filename = scrshotDir + name;

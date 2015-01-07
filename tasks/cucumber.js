@@ -186,7 +186,11 @@ module.exports = function(grunt) {
                   name= step.name && step.name.split(' ').join('_')|| step.keyword.trim(),
                   name = name + Math.round(Math.random() * 10000) + '.png', //randomize the file name
                   filename = scrshotDir + name;
-              fs.writeFileSync(filename, new Buffer(stepData.data, 'base64'));
+              fs.writeFile(filename, new Buffer(stepData.data, 'base64'), function(err) {
+                  if(err){
+                    console.error('Error saving screenshot '+filename); //asynchronously save screenshot
+                  }
+              });
               step.image = 'screenshot/'+ name;
             }
             if(!step.result) {

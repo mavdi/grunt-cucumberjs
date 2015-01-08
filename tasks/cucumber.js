@@ -7,7 +7,7 @@
 */
 
 'use strict';
-
+var fs = require('fs');
 module.exports = function(grunt) {
 
   var version = grunt.file.readJSON('./package.json').version;
@@ -59,6 +59,10 @@ module.exports = function(grunt) {
       commands.push('-f', 'json');
     } else {
       commands.push('-f', options.format);
+    }
+
+    if(grunt.option('require')) {
+      commands.push('--require', grunt.option('require'));
     }
 
     if (grunt.option('features')) {
@@ -152,7 +156,12 @@ module.exports = function(grunt) {
     var setStats = function(suite) {
       var features = suite.features;
       var rootDir = commondir(_.pluck(features, 'uri'));
-
+      var scrshotDir;
+      if(options.output.lastIndexOf('/')>-1) {
+        scrshotDir  = options.output.substring(0, options.output.lastIndexOf('/')) + '/screenshot/';
+      } else {
+        scrshotDir = 'screenshot/';
+      }
       features.forEach(function(feature) {
         feature.passed = 0;
         feature.failed = 0;
@@ -169,6 +178,21 @@ module.exports = function(grunt) {
           element.skipped = 0;
 
           element.steps.forEach(function(step) {
+            if (step.embeddings !== undefined) {
+              if(!fs.existsSync(scrshotDir)){
+                fs.mkdirSync(scrshotDir);
+              }
+              var stepData = step.embeddings[0],
+                  name= step.name && step.name.split(' ').join('_')|| step.keyword.trim(),
+                  name = name + Math.round(Math.random() * 10000) + '.png', //randomize the file name
+                  filename = scrshotDir + name;
+              fs.writeFile(filename, new Buffer(stepData.data, 'base64'), function(err) {
+                  if(err){
+                    console.error('Error saving screenshot '+filename); //asynchronously save screenshot
+                  }
+              });
+              step.image = 'screenshot/'+ name;
+            }
             if(!step.result) {
               return 0;
             }

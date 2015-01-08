@@ -67,6 +67,14 @@ this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function
                           <%= step.result.error_message %>
                         </div>
                       <% } %>
+
+                       <% if (step.image) { %>
+                                                <a class="toggle" href="#">Screenshot -</a>
+                                                <a class="screenshot" href="<%= step.image %>">
+                                                 <img class="screenshot" style="height:100%;width:100%" id="my_images" src="<%= step.image %>"/>
+                                                 </a>
+                       <% } %>
+
                     <% } %>
                     </p>              
                   <% }); %>

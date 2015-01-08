@@ -137,9 +137,9 @@ this.After(function (scenario, callback) {
 ```
 Below are some sample HTML reports with screenshots (note that javascript to collapse/expand a screenshots doesn't appear to respond in htmlpreview site below, but they should work fine on locally generated reports,
 
-[Bootstrap Theme Reports][3]
-[Simple Theme Reports][4]
-[Foundation Theme Reports][5]
+*[Bootstrap Theme Reports][3]
+*[Simple Theme Reports][4]
+*[Foundation Theme Reports][5]
 
 [1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"
 [2]: https://github.com/cucumber/cucumber-js "cucumber-js"

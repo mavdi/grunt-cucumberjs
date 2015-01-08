@@ -118,3 +118,31 @@ Default: `'false'`
 Available: `['true', 'false']`
 
 A flag to turn console log on or off
+
+### Attaching Screenshots to grunt-cucumberjs HTML report
+
+If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach screenshots to grunt-cucumberjs HTML report. Typically screenshots are taken after a test failure to help debug what went wrong when analyzing results, for example
+
+```javascript
+this.After(function (scenario, callback) {
+        if(scenario.isFailed()){
+            driver.takeScreenshot().then(function (buffer) {
+                scenario.attach(new Buffer(buffer, 'base64').toString('binary'), 'image/png');
+                 driver.quit().then(function () {
+                                callback();
+                 });
+            });
+        }
+});
+```
+Below are some sample HTML reports with screenshots (note that javascript to collapse/expand a screenshots doesn't appear to respond in htmlpreview site below, but they should work fine on locally generated reports,
+
+[Bootstrap Theme Reports][3]
+[Simple Theme Reports][4]
+[Foundation Theme Reports][5]
+
+[1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"
+[2]: https://github.com/cucumber/cucumber-js "cucumber-js"
+[3]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_bootstrap.html "Bootstrap Theme Reports"
+[4]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_simple.html "Simple Theme Reports"
+[5]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_foundation.html "Foundation Theme Reports"

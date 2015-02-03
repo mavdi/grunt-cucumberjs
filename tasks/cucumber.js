@@ -29,6 +29,7 @@ module.exports = function(grunt) {
       theme: 'foundation',
       templateDir: 'features/templates',
       tags: '',
+      require: '',
       debug: false
     });
 
@@ -59,6 +60,16 @@ module.exports = function(grunt) {
       commands.push('-f', 'json');
     } else {
       commands.push('-f', options.format);
+    }
+
+    if (options.require) {
+      if (options.require instanceof Array) {
+        options.require.forEach(function(element, index, array) {
+          commands.push('--require', element);
+        });
+      } else {
+        commands.push('--require', options.require);
+      }
     }
 
     if(grunt.option('require')) {

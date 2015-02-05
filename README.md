@@ -59,11 +59,8 @@ cucumberjs: {
 #runs all features specified in task
 $ grunt cucumberjs
 
-#provide step_definitions and hooks if they are NOT in default location of ```features/step_definitions```
-$ grunt cucumberjs --require=test/functional/step_definitions/
-
 #you can override options via the cli
-$ grunt cucumberjs --features=features/myFeature.feature --format=pretty
+$ grunt cucumberjs --require=test/functional/step_definitions/ --features=features/myFeature.feature --format=pretty
 ```
 
 ### Options
@@ -72,7 +69,14 @@ $ grunt cucumberjs --features=features/myFeature.feature --format=pretty
 Type: `String`
 Default: `''`
 
-passes the value as ```--steps``` parameter to cucumber.
+Passes the value as ```--steps``` parameter to cucumber.
+
+#### options.require
+Type: `String`
+Default: `''`
+
+Passes the value as ```--require``` parameter to cucumber. If an array, each item is passed as a separate ```--require``` parameter.
+Use if step_definitions and hooks are NOT in default location of ```features/step_definitions```
 
 #### options.tags
 Type: `String|Array`

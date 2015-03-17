@@ -1,4 +1,4 @@
-<% _.each(features, function(feature) { %> 
+<% _.each(suite.features, function(feature) { %> 
 <div class="row">
   <div class="large-12 columns">
 
@@ -9,25 +9,46 @@
       <div class="section-container accordion" data-section="accordion">
         <section>
           <p class="title accordion-title" data-section-title><a href="#"><spa><%= element.keyword %>: </span><%= element.name %> 
-            <% if(_.some(element.steps, function(step){ return step.result.status === 'failed'; })) {  %>
+            <% if(_.some(element.steps, function(step){ return step.result && step.result.status === 'failed'; })) {  %>
               <span class="alert label right">Failed</span>
-            <% } else { %>
+            <% } else if(_.some(element.steps, function(step){ return step.result && step.result.status === 'undefined'; })) {  %>
+              <span class="label right">Skipped</span>
+            <% } else if(_.every(element.steps, function(step){ return step.result && step.result.status === 'success' })) { %>
               <span class="success label right">Success</span>
             <% } %>
           </a>
           </p>
+
           <div class="content" data-section-content>
             <% _.each(element.steps, function(step) { %> 
+
               <p class="subheader">
                 <span class="text"><span class="keyword highlight"><%= step.keyword %></span> <%= step.name %></span>
+		<% if(step.result) { %>
                 <small>
                 <% if(step.result.status === 'failed') { %>
                   <span class="alert label right">Failed</span>
+                <% } else if(step.result.status === 'skipped') { %>
+                  <span class="label right">Skipped</span>
+                <% } else if(step.result.status === 'undefined') { %>
+                  <span class="label right">undefined</span>
                 <% } else { %>
                   <span class="success label right">Success</span>
                 <% } %>
                 </small>
+		<% } %>
+		 <% if (step.image) { %>
+                 <a class="toggle" href="#">Screenshot -</a>
+                  <a class="screenshot" href="<%= step.image %>">
+                      <img class="screenshot" style="height:100%;width:100%" id="my_images" src="<%= step.image %>"/>
+                   </a>
+          <% } %>
               </p>              
+
+              <% if (step.result && step.result.error_message) { %>
+                <span class="text"><%= step.result.error_message %></span>
+              <% } %>
+
             <% }); %>
           </div>
         </section> 

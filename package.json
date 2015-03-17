@@ -52,7 +52,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "cucumber": "~0.3.1",
+    "cucumber": "~0.4.8",
     "handlebars": "~1.0.12",
     "underscore": "~1.5.2",
     "commondir": "~0.0.1"

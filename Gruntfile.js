@@ -10,47 +10,52 @@
 
 module.exports = function(grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js'
-      ],
-      options: {
-        jshintrc: '.jshintrc',
-      },
-    },
+    // Project configuration.
+    grunt.initConfig({
+        jshint: {
+            all: [
+                'Gruntfile.js',
+                'package.json',
+                'tasks/*.js',
+                'features/**/*.js'
+            ],
+            options: {
+                jshintrc: '.jshintrc'
+            }
+        },
 
-    // Before generating any new files, remove any previously-created files.
-    clean: {
-      tests: ['tmp'],
-    },
+        // Before generating any new files, remove any previously-created files.
+        clean: {
+            tests: ['tmp']
+        },
 
-    // Configuration to be run (and then tested).
-    cucumberjs: {
+        // Configuration to be run (and then tested).
+        cucumberjs: {
 
-      options: {
-        steps: '',
-        tags: '',
-        templateDir: 'templates/simple',
-        output: 'tmp/features_report.html',
-        format: 'html',
-        cucumber: ''
-      },
-      features : []
-    }
+            options: {
+                steps: '',
+                tags: '',
+                templateDir: 'templates/simple',
+                output: 'tmp/features_report.html',
+                format: 'html',
+                cucumber: ''
+            },
+            features: []
+        },
+        jsbeautifier: {
+            src: ['<%= jshint.all %>']
+        }
+    });
 
-  });
+    // Actually load this plugin's task(s).
+    grunt.loadTasks('tasks');
 
-  // Actually load this plugin's task(s).
-  grunt.loadTasks('tasks');
+    // These plugins provide necessary tasks.
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-jsbeautifier');
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-
-  // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'cucumberjs']);
+    // By default, lint and run all tests.
+    grunt.registerTask('default', ['jshint', 'jsbeautifier', 'cucumberjs']);
 
 };

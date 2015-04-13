@@ -123,6 +123,13 @@ Available: `['true', 'false']`
 
 A flag to turn console log on or off
 
+#### options.debugger
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+A flag to enabling debuggin from IDE like WebStorm. Limitation of this flag is it only does not support the HTML output, yet ;)
+
 ### Attaching Screenshots to grunt-cucumberjs HTML report
 
 If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach screenshots to grunt-cucumberjs HTML report. Typically screenshots are taken after a test failure to help debug what went wrong when analyzing results, for example

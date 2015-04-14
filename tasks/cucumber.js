@@ -16,8 +16,8 @@ module.exports = function(grunt) {
   var _ = require('underscore');
   var commondir = require('commondir');
 
-  var WIN32_BIN_PATH = '.\\node_modules\\.bin\\cucumber-js.cmd';
-  var UNIX_BIN_PATH = './node_modules/cucumber/bin/cucumber.js';
+  var WIN32_BIN_PATH = 'node_modules\\.bin\\cucumber-js.cmd';
+  var UNIX_BIN_PATH = 'node_modules/cucumber/bin/cucumber.js';
 
   grunt.registerMultiTask('cucumberjs', 'Run cucumber.js features', function() {
     var done = this.async();

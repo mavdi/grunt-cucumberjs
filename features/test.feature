@@ -1,5 +1,5 @@
 Feature: Test Feature
-  Test Description
+  Test Description with a bracket [
 
   Background: 
     Given I have a background element

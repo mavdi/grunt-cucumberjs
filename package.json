@@ -51,7 +51,7 @@
     "dependencies": {
         "handlebars": "~1.0.12",
         "underscore": "~1.5.2",
-        "commondir": "~0.0.1”,
+        "commondir": "~0.0.1",
         "js-base64": "^2.1.8"
     }
 }

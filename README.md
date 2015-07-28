@@ -153,9 +153,7 @@ If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js
 
 ```javascript
 this.After(function (scenario, callback) {
-        
-                scenario.attach("test data goes here");
-
+  scenario.attach("test data goes here");
 });
 ```
 Below are some sample HTML reports with screenshots (note that javascript to collapse/expand a screenshots doesn't appear to respond in htmlpreview site below, but they should work fine on locally generated reports,

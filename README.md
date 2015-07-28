@@ -146,6 +146,18 @@ this.After(function (scenario, callback) {
         }
 });
 ```
+
+### Add texts to the cucumber steps to grunt-cucumberjs HTML report
+
+If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach texts to grunt-cucumberjs HTML report. This helps in debugging or reviewing your results in particular to your tests data. 
+
+```javascript
+this.After(function (scenario, callback) {
+        
+                scenario.attach("test data goes here");
+
+});
+```
 Below are some sample HTML reports with screenshots (note that javascript to collapse/expand a screenshots doesn't appear to respond in htmlpreview site below, but they should work fine on locally generated reports,
 
 1. [Bootstrap Theme Reports][3]

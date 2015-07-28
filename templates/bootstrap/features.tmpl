@@ -68,6 +68,13 @@ this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function
                         </div>
                       <% } %>
 
+                      <% if (step.text) { %>
+                           <a href="#error<%= featureIndex %><%= scenarioIndex %><%= stepIndex %>" data-toggle="collapse">+ Show Info</a>
+                           <div id="error<%= featureIndex %><%= scenarioIndex %><%= stepIndex %>" class="collapse">
+                             <%= step.text %>
+                           </div>
+                      <% } %>
+
                        <% if (step.image) { %>
                                                 <a class="toggle" href="#">Screenshot -</a>
                                                 <a class="screenshot" href="<%= step.image %>">

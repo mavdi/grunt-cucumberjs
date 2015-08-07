@@ -34,6 +34,10 @@ module.exports = function(grunt) {
 
         var commands = [];
 
+		if (options.executeParallel && options.workers) {
+			commands.push('-w', options.workers);
+		}
+
         if (options.steps) {
             commands.push('-r', options.steps);
         }
@@ -49,7 +53,10 @@ module.exports = function(grunt) {
         }
 
         if (options.format === 'html') {
-            commands.push('-f', 'json');
+			if(options.executeParallel) {
+				commands.push('-f', 'json:' + options.output +'.json');
+			} else {
+			    commands.push('-f', 'json');
         } else {
             commands.push('-f', options.format);
         }

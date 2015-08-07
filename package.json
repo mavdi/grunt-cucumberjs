@@ -1,7 +1,7 @@
 {
     "name": "grunt-cucumberjs",
     "description": "Generates documentation from Cucumber features",
-    "version": "0.7.3",
+    "version": "1.0.0",
     "homepage": "https://github.com/mavdi/grunt-cucumberjs",
     "author": {
         "name": "Mehdi Avdi",

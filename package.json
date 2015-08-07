@@ -19,6 +19,10 @@
         "name": "Jozz Hart",
         "email": "me@jozzhart.com",
         "url": "http://jozzhart.com"
+    }, {
+        "name": "Kushang Gajjar",
+        "email": "g.kushang@gmail.com",
+        "url": "https://github.com/gkushang"
     }],
     "bugs": {
         "url": "https://github.com/mavdi/grunt-cucumberjs/issues"

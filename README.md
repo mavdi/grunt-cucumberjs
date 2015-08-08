@@ -130,6 +130,20 @@ Available: `['true', 'false']`
 
 A flag to enabling debuggin from IDE like WebStorm. Limitation of this flag is it only does not support the HTML output, yet ;)
 
+#### options.executeParallel
+Type: `Boolean`
+Default: `'undefined'`
+Available: `['true', 'false']`
+
+A flag to enable Parallel execution. It requires dependency on [parallel-cucumber][6] npmjs module
+
+#### options.workers
+Type: `Number`
+Default: `'8'`
+Available: `'1 to 8'`
+
+The number of features that will be executed in parallel.
+
 ### Attaching Screenshots to grunt-cucumberjs HTML report
 
 If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach screenshots to grunt-cucumberjs HTML report. Typically screenshots are taken after a test failure to help debug what went wrong when analyzing results, for example
@@ -169,3 +183,4 @@ Below are some sample HTML reports with screenshots (note that javascript to col
 [3]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_bootstrap.html "Bootstrap Theme Reports"
 [4]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_simple.html "Simple Theme Reports"
 [5]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_foundation.html "Foundation Theme Reports"
+[6]: https://www.npmjs.com/package/parallel-cucumber

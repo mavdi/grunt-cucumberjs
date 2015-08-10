@@ -34,13 +34,17 @@ module.exports = function(grunt) {
 
         var commands = [];
 
+        if (options.executeParallel && options.workers) {
+            commands.push('-w', options.workers);
+        }
+
         if (options.steps) {
             commands.push('-r', options.steps);
         }
 
         if (options.tags) {
             if (options.tags instanceof Array) {
-                options.tags.forEach(function(element, index, array) {
+                options.tags.forEach(function (element, index, array) {
                     commands.push('-t', element);
                 });
             } else {
@@ -49,14 +53,18 @@ module.exports = function(grunt) {
         }
 
         if (options.format === 'html') {
-            commands.push('-f', 'json');
+            if (options.executeParallel) {
+                commands.push('-f', 'json:' + options.output + '.json');
+            } else {
+                commands.push('-f', 'json');
+            }
         } else {
             commands.push('-f', options.format);
         }
 
         if (options.require) {
             if (options.require instanceof Array) {
-                options.require.forEach(function(element, index, array) {
+                options.require.forEach(function (element, index, array) {
                     commands.push('--require', element);
                 });
             } else {
@@ -71,8 +79,8 @@ module.exports = function(grunt) {
         if (grunt.option('features')) {
             commands.push(grunt.option('features'));
         } else {
-            this.files.forEach(function(f) {
-                f.src.forEach(function(filepath) {
+            this.files.forEach(function (f) {
+                f.src.forEach(function (filepath) {
                     if (!grunt.file.exists(filepath)) {
                         grunt.log.warn('Source file "' + filepath + '" not found.');
                         return;

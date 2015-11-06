@@ -28,7 +28,13 @@ module.exports = function(grunt) {
         // resolve options set via cli
         for (var key in options) {
             if (grunt.option(key)) {
-                options[key] = grunt.option(key);
+                if(key === 'tags') {
+                    if(options.tags === '') {
+                        options[key] = grunt.option(key);
+                    }
+                }else {
+                    options[key] = grunt.option(key);
+                }
             }
         }
 

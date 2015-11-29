@@ -176,6 +176,14 @@ Below are some sample HTML reports with screenshots (note that javascript to col
 2. [Simple Theme Reports][4]
 3. [Foundation Theme Reports][5]
 
+### Pie Charts
+Two pie charts are displayed on report
+
+1. Features: number of passed/failed features
+2. Scenarios: number of passed/failed/pending scenarios.
+
+Please note that Pie Charts are available only on bootstrap report
+
 [1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"
 [2]: https://github.com/cucumber/cucumber-js "cucumber-js"
 [3]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_bootstrap.html "Bootstrap Theme Reports"

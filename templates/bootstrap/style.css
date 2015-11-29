@@ -65,6 +65,14 @@
   float: left;
 }
 
+div#piechart_features.chart {
+  padding-left: 3.8em
+}
+
+div#piechart_scenarios.chart {
+  padding-left: 1.1em;
+}
+
 div.chart div div svg rect {
   fill: #f5f5f5;
 }

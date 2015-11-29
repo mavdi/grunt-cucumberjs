@@ -7,10 +7,19 @@ function drawChart(chartData) {
         ['Skipped', chartData.skipped]
     ]);
 
+    var total = chartData.passed + chartData.failed + (chartData.notdefined || 0) + (chartData.skipped || 0);
+    var title;
+
+    if (total === 1) {
+        title = total + ' ' + chartData.title.slice(0, -1)
+    }else {
+        title = total + ' ' + chartData.title;
+    }
+
     var options = {
         width: 500,
         height: 270,
-        title: chartData.title,
+        title: title,
         is3D: true,
         colors: ['#5cb85c', '#d9534f', '#5bc0de', '#f0ad4e'],
         fontSize: '13',

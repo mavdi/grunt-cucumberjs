@@ -14,6 +14,7 @@
               <% if (feature.passed) { %><span class="label label-success"><%= feature.passed %></span><% } %>
               <% if (feature.failed) { %><span class="label label-danger"><%= feature.failed %></span><% } %>
               <% if (feature.notdefined) { %><span class="label label-info"><%= feature.notdefined %></span><% } %>
+              <% if (feature.skipped) { %><span class="label label-warning"><%= feature.skipped %></span><% } %>
             </span>
           </a>
         </h4>

@@ -177,12 +177,15 @@ Below are some sample HTML reports with screenshots (note that javascript to col
 3. [Foundation Theme Reports][5]
 
 ### Pie Charts
+
+Sample pie chart is available at [Bootstrap Theme Report with Pie Chart][7]
+
 Two pie charts are displayed on report
 
 1. Features: number of passed/failed features
 2. Scenarios: number of passed/failed/pending scenarios.
 
-Please note that Pie Charts are available only on bootstrap report
+Please note that Pie Charts are available only for Bootstrap Theme
 
 [1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"
 [2]: https://github.com/cucumber/cucumber-js "cucumber-js"
@@ -190,3 +193,4 @@ Please note that Pie Charts are available only on bootstrap report
 [4]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_simple.html "Simple Theme Reports"
 [5]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_foundation.html "Foundation Theme Reports"
 [6]: https://www.npmjs.com/package/parallel-cucumber
+[7]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/report/report/cucumber_report.html "Pie Chart Reports"

@@ -57,20 +57,7 @@
 }
 
 .chart {
-  padding-bottom: 40px;
-  padding-top: 10px;
-  padding-left: 55px;
-  margin: 0 auto;
-  width: 50%;
-  float: left;
-}
-
-div#piechart_features.chart {
-  padding-left: 3.8em
-}
-
-div#piechart_scenarios.chart {
-  padding-left: 1.1em;
+  padding-bottom: 15px;
 }
 
 div.chart div div svg rect {

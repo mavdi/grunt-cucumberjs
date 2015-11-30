@@ -17,8 +17,8 @@ function drawChart(chartData) {
     }
 
     var options = {
-        width: 500,
-        height: 270,
+        width: '100%',
+        height: 240 ,
         title: title,
         is3D: true,
         colors: ['#5cb85c', '#d9534f', '#5bc0de', '#f0ad4e'],

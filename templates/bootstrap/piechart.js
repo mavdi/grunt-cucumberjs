@@ -25,9 +25,9 @@ function drawChart(chartData) {
         fontSize: '13',
         fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
         slices: {
-            1: {offset: 0.1},
-            2: {offset: 0.2},
-            3: {offset: 0.3},
+            1: {offset: 0.4},
+            2: {offset: 0.4},
+            3: {offset: 0.4}
         },
         titleTextStyle: {
             fontSize: '13',

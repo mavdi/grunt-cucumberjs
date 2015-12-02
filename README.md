@@ -116,6 +116,13 @@ Available: `['true', 'false']`
 To keep or not the generated json file, applicable for options.format = html only.
 It will be saved as options.output + '.json'
 
+#### options.failFast
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+ends the suite after the first failure
+
 #### options.debug
 Type: `Boolean`
 Default: `'false'`

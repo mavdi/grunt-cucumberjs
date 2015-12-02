@@ -38,7 +38,8 @@ module.exports = function(grunt) {
                 templateDir: 'templates/simple',
                 output: 'tmp/features_report.html',
                 format: 'html',
-                cucumber: ''
+                cucumber: '',
+                failFast:false
             },
             features: []
         },

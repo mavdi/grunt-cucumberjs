@@ -20,7 +20,8 @@ module.exports = function(grunt) {
             tags: '',
             require: '',
             debug: false,
-            debugger: false
+            debugger: false,
+            failFast: false
         });
 
         var handler = options.debugger ? require('../lib/requireHandler') : require('../lib/processHandler');
@@ -66,6 +67,10 @@ module.exports = function(grunt) {
             }
         } else {
             commands.push('-f', options.format);
+        }
+
+        if (options.failFast || grunt.option('fail-fast')) {
+            commands.push('--fail-fast');
         }
 
         if (options.require) {

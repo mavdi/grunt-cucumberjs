@@ -41,6 +41,10 @@ module.exports = function(grunt) {
 
         var commands = [];
 
+        if (grunt.option('rerun')) {
+            commands.push(grunt.option('rerun'));
+        }
+
         if (options.executeParallel && options.workers) {
             commands.push('-w', options.workers);
         }

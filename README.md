@@ -157,7 +157,19 @@ Default: `undefined`
 
 Rerun the failed scenarios recorded in the `@rerun.txt` file.
 
-e.g. `--rerun=/path/to/@rerun.txt`. If `@rerun.txt` is generated at projects root level then, `--rerun=@rerun.txt`
+To Re-run failed scenarios:
+
+* Set the cucumber-js task format to `rerun:@rerun.txt`
+```
+options: {
+     format: 'rerun:@rerun.txt',
+     .....
+     ....
+}
+```
+It will record all the faile scenarios to `@rerun.txt`
+
+* Run failed scenarios by passing `--rerun=path/to/@rerun.txt` grunt option
 
 ### Attaching Screenshots to grunt-cucumberjs HTML report
 

@@ -151,6 +151,27 @@ Available: `'1 to 8'`
 
 The number of features that will be executed in parallel.
 
+#### options.rerun
+Type: `String`
+Default: `undefined`
+
+Rerun the failed scenarios recorded in the `@rerun.txt` file.
+
+To Re-run failed scenarios:
+
+* Set the cucumber-js task format to `rerun:@rerun.txt`
+```
+options: {
+     format: 'rerun:@rerun.txt',
+     .....
+     ....
+}
+```
+It will record all the faile scenarios to `@rerun.txt`. 
+Please note that it won't generate HTML report due to change in the format
+
+* Run failed scenarios by passing `--rerun=path/to/@rerun.txt` grunt option
+
 ### Attaching Screenshots to grunt-cucumberjs HTML report
 
 If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach screenshots to grunt-cucumberjs HTML report. Typically screenshots are taken after a test failure to help debug what went wrong when analyzing results, for example

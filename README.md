@@ -167,7 +167,8 @@ options: {
      ....
 }
 ```
-It will record all the faile scenarios to `@rerun.txt`
+It will record all the faile scenarios to `@rerun.txt`. 
+Please note that it won't generate HTML report due to change in the format
 
 * Run failed scenarios by passing `--rerun=path/to/@rerun.txt` grunt option
 

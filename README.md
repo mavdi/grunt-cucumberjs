@@ -108,6 +108,15 @@ Type: `String`
 Default: `'html'`
 Available: `['pretty', 'progress', 'summary', 'html']`
 
+#### options.formats
+Supports multiple formatter.
+Type: `Array`
+Available: `['pretty', 'progress', 'summary', 'html']`
+
+e.g. `formats: ['html', 'pretty']`
+
+Note: `html` formatter will provide Json as well as `html` report
+
 #### options.saveJson
 Type: `Boolean`
 Default: `'false'`
@@ -135,7 +144,7 @@ Type: `Boolean`
 Default: `'false'`
 Available: `['true', 'false']`
 
-A flag to enabling debuggin from IDE like WebStorm. Limitation of this flag is it only does not support the HTML output, yet ;)
+A flag to enabling debugging from IDE like WebStorm. Limitation of this flag is it only does not support the HTML output, yet ;)
 
 #### options.executeParallel
 Type: `Boolean`
@@ -144,6 +153,8 @@ Available: `['true', 'false']`
 
 A flag to enable Parallel execution. It requires dependency on [parallel-cucumber][6] npmjs module
 
+Note: This feature is supported for cucumber v@0.7.0 or lesser
+
 #### options.workers
 Type: `Number`
 Default: `'8'`
@@ -151,26 +162,7 @@ Available: `'1 to 8'`
 
 The number of features that will be executed in parallel.
 
-#### options.rerun
-Type: `String`
-Default: `undefined`
-
-Rerun the failed scenarios recorded in the `@rerun.txt` file.
-
-To Re-run failed scenarios:
-
-* Set the cucumber-js task format to `rerun:@rerun.txt`
-```
-options: {
-     format: 'rerun:@rerun.txt',
-     .....
-     ....
-}
-```
-It will record all the faile scenarios to `@rerun.txt`. 
-Please note that it won't generate HTML report due to change in the format
-
-* Run failed scenarios by passing `--rerun=path/to/@rerun.txt` grunt option
+Note: This feature is supported for cucumber v@0.7.0 or lesser
 
 ### Attaching Screenshots to grunt-cucumberjs HTML report
 
@@ -191,7 +183,7 @@ this.After(function (scenario, callback) {
 
 ### Add texts to the cucumber steps to grunt-cucumberjs HTML report
 
-If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach texts to grunt-cucumberjs HTML report. This helps in debugging or reviewing your results in particular to your tests data. 
+If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach texts to grunt-cucumberjs HTML report. This helps in debugging or reviewing your results in particular to your tests data.
 
 ```javascript
 this.After(function (scenario, callback) {

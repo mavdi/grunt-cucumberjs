@@ -115,7 +115,7 @@ Available: `['pretty', 'progress', 'summary', 'html']`
 
 e.g. `formats: ['html', 'pretty']`
 
-Note: `html` formatter will provide Json as well as `html` report
+Note: `html` formatter will provide Json as well as `html` report. Multiple formatter is supported for cucumber v@0.8.0 or higher
 
 #### options.saveJson
 Type: `Boolean`
@@ -163,6 +163,28 @@ Available: `'1 to 8'`
 The number of features that will be executed in parallel.
 
 Note: This feature is supported for cucumber v@0.7.0 or lesser
+
+#### options.rerun
+Type: `String`
+Default: `undefined`
+
+Rerun the failed scenarios recorded in the `@rerun.txt` file.
+
+To Re-run failed scenarios:
+
+* Set the cucumber-js task format to `rerun:@rerun.txt`
+```
+options: {
+     format: 'rerun:@rerun.txt',
+     .....
+     ....
+}
+```
+It will record all the failed scenarios to `@rerun.txt`. 
+
+Take a look at `options.formats` to generate html report
+
+* Run failed scenarios by passing `--rerun=path/to/@rerun.txt` grunt option
 
 ### Attaching Screenshots to grunt-cucumberjs HTML report
 

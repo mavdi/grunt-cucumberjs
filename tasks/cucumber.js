@@ -37,7 +37,7 @@ module.exports = function(grunt) {
             } else {
                 commands.push('-f', options.format);
             }
-        }
+        };
 
         // resolve options set via cli
         for (var key in options) {
@@ -85,8 +85,12 @@ module.exports = function(grunt) {
             applyLegacyFormatters();
         }
 
-        if (options.failFast || grunt.option('fail-fast')) {
+        if (options.failFast || grunt.option('fail-fast') || grunt.cli.options['fail-fast'] === true) {
             commands.push('--fail-fast');
+        }
+
+        if (options.dryRun || grunt.option('dry-run') || grunt.cli.options['dry-run'] === true) {
+            commands.push('--dry-run');
         }
 
         if (options.require) {

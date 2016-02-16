@@ -132,6 +132,17 @@ Available: `['true', 'false']`
 
 ends the suite after the first failure
 
+it can also be activated without setting `options.failFast` and passing `--fail-fast` as a grunt task option
+
+#### options.dryRun
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+dry-run the suite and provides snippets for pending steps
+
+it can also be activated without setting `options.dryRun` and passing `--dry-run` as a grunt task option
+
 #### options.debug
 Type: `Boolean`
 Default: `'false'`

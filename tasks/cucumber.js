@@ -59,7 +59,9 @@ module.exports = function(grunt) {
                     commands.push('-t', element);
                 });
             } else {
-                commands.push('-t', options.tags);
+	        options.tags.split(',').forEach(function (element, index, array) {
+			commands.push('-t', element);
+        	});
             }
         }
 

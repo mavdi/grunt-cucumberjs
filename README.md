@@ -108,6 +108,15 @@ Type: `String`
 Default: `'html'`
 Available: `['pretty', 'progress', 'summary', 'html']`
 
+#### options.formats
+Supports multiple formatter.
+Type: `Array`
+Available: `['pretty', 'progress', 'summary', 'html']`
+
+e.g. `formats: ['html', 'pretty']`
+
+Note: `html` formatter will provide Json as well as `html` report. Multiple formatter is supported for cucumber v@0.8.0 or higher
+
 #### options.saveJson
 Type: `Boolean`
 Default: `'false'`
@@ -123,6 +132,17 @@ Available: `['true', 'false']`
 
 ends the suite after the first failure
 
+it can also be activated without setting `options.failFast` and passing `--fail-fast` as a grunt task option
+
+#### options.dryRun
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+dry-run the suite and provides snippets for pending steps
+
+it can also be activated without setting `options.dryRun` and passing `--dry-run` as a grunt task option
+
 #### options.debug
 Type: `Boolean`
 Default: `'false'`
@@ -135,7 +155,7 @@ Type: `Boolean`
 Default: `'false'`
 Available: `['true', 'false']`
 
-A flag to enabling debuggin from IDE like WebStorm. Limitation of this flag is it only does not support the HTML output, yet ;)
+A flag to enabling debugging from IDE like WebStorm. Limitation of this flag is it only does not support the HTML output, yet ;)
 
 #### options.executeParallel
 Type: `Boolean`
@@ -144,12 +164,16 @@ Available: `['true', 'false']`
 
 A flag to enable Parallel execution. It requires dependency on [parallel-cucumber][6] npmjs module
 
+Note: This feature is supported for cucumber v@0.7.0 or lesser
+
 #### options.workers
 Type: `Number`
 Default: `'8'`
 Available: `'1 to 8'`
 
 The number of features that will be executed in parallel.
+
+Note: This feature is supported for cucumber v@0.7.0 or lesser
 
 #### options.rerun
 Type: `String`
@@ -167,8 +191,9 @@ options: {
      ....
 }
 ```
-It will record all the faile scenarios to `@rerun.txt`. 
-Please note that it won't generate HTML report due to change in the format
+It will record all the failed scenarios to `@rerun.txt`. 
+
+Take a look at `options.formats` to generate html report
 
 * Run failed scenarios by passing `--rerun=path/to/@rerun.txt` grunt option
 
@@ -191,7 +216,7 @@ this.After(function (scenario, callback) {
 
 ### Add texts to the cucumber steps to grunt-cucumberjs HTML report
 
-If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach texts to grunt-cucumberjs HTML report. This helps in debugging or reviewing your results in particular to your tests data. 
+If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach texts to grunt-cucumberjs HTML report. This helps in debugging or reviewing your results in particular to your tests data.
 
 ```javascript
 this.After(function (scenario, callback) {

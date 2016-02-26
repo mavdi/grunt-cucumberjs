@@ -26,24 +26,33 @@ module.exports = function(grunt) {
 
         var handler = options.debugger ? require('../lib/requireHandler') : require('../lib/processHandler');
 
+        var applyLegacyFormatters = function() {
+            if (options.format === 'html') {
+                options.isHtml = true;
+                if (options.executeParallel) {
+                    commands.push('-f', 'json:' + options.output + '.json');
+                } else {
+                    commands.push('-f', 'json');
+                }
+            } else {
+                commands.push('-f', options.format);
+            }
+        };
+
         // resolve options set via cli
         for (var key in options) {
             if (grunt.option(key)) {
-                if(key === 'tags') {
-                    if(options.tags === '') {
+                if (key === 'tags') {
+                    if (options.tags === '') {
                         options[key] = grunt.option(key);
                     }
-                }else {
+                } else {
                     options[key] = grunt.option(key);
                 }
             }
         }
 
         var commands = [];
-
-        if (grunt.option('rerun')) {
-            commands.push(grunt.option('rerun'));
-        }
 
         if (options.executeParallel && options.workers) {
             commands.push('-w', options.workers);
@@ -55,7 +64,7 @@ module.exports = function(grunt) {
 
         if (options.tags) {
             if (options.tags instanceof Array) {
-                options.tags.forEach(function (element, index, array) {
+                options.tags.forEach(function(element, index, array) {
                     commands.push('-t', element);
                 });
             } else {
@@ -63,23 +72,30 @@ module.exports = function(grunt) {
             }
         }
 
-        if (options.format === 'html') {
-            if (options.executeParallel) {
-                commands.push('-f', 'json:' + options.output + '.json');
-            } else {
-                commands.push('-f', 'json');
-            }
-        } else {
-            commands.push('-f', options.format);
+        if (options.formats) {
+            options.formats.forEach(function(format) {
+                if (format === 'html') {
+                    options.isHtml = true;
+                    commands.push('-f', 'json:' + options.output + '.json');
+                } else {
+                    commands.push('-f', format);
+                }
+            })
+        } else if (options.format) {
+            applyLegacyFormatters();
         }
 
-        if (options.failFast || grunt.option('fail-fast')) {
+        if (options.failFast || grunt.option('fail-fast') || grunt.cli.options['fail-fast'] === true) {
             commands.push('--fail-fast');
+        }
+
+        if (options.dryRun || grunt.option('dry-run') || grunt.cli.options['dry-run'] === true) {
+            commands.push('--dry-run');
         }
 
         if (options.require) {
             if (options.require instanceof Array) {
-                options.require.forEach(function (element, index, array) {
+                options.require.forEach(function(element, index, array) {
                     commands.push('--require', element);
                 });
             } else {
@@ -94,13 +110,12 @@ module.exports = function(grunt) {
         if (grunt.option('features')) {
             commands.push(grunt.option('features'));
         } else {
-            this.files.forEach(function (f) {
-                f.src.forEach(function (filepath) {
+            this.files.forEach(function(f) {
+                f.src.forEach(function(filepath) {
                     if (!grunt.file.exists(filepath)) {
                         grunt.log.warn('Source file "' + filepath + '" not found.');
                         return;
                     }
-
                     commands.push(filepath);
                 });
             });

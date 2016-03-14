@@ -128,6 +128,29 @@ Available: `['true', 'false']`
 To keep or not the generated json file, applicable for options.format = html only.
 It will be saved as options.output + '.json'
 
+#### options.executeParallel
+Type: `Boolean`
+Default: `'undefined'`
+Available: `['true', 'false']`
+
+A flag to enable Parallel execution. 
+
+* For Cucumber version latest or greater than v0.8.0
+```
+  • You can run Cucumber Features and/or Scenarios Parallel
+  • `--parallel scenarios` runs scenarios parallel
+  • By default or `--parallel features` runs features in parallel 
+```
+
+For more information visit [cucumber-parallel][8] module
+
+
+* For Cucumber version lesser than v0.8.0, it requires dependency on [parallel-cucumber][6] npmjs module
+```
+  • You can run only Cucumber Features in Parallel
+  • `--workers <number>` defines number of workers to run in parallel
+```
+
 #### options.failFast
 Type: `Boolean`
 Default: `'false'`
@@ -160,35 +183,6 @@ Available: `['true', 'false']`
 
 A flag to enabling debugging from IDE like WebStorm. Limitation of this flag is it only does not support the HTML output, yet ;)
 
-#### options.executeParallel
-Type: `Boolean`
-Default: `'undefined'`
-Available: `['true', 'false']`
-
-A flag to enable Parallel execution. 
-
-* For Cucumber version latest or greater than v0.8.0
-```
-  • You can run Cucumber Features and/or Scenarios Parallel
-  • `--parallel scenarios` runs scenarios parallel
-  • By default or `--parallel features` runs features in parallel 
-```
-
-For more information visit [cucumber-parallel][8] module
-
-
-* For Cucumber version lesser than v0.8.0, it requires dependency on [parallel-cucumber][6] npmjs module
-
-
-#### options.workers
-Type: `Number`
-Default: `'8'`
-Available: `'1 to 8'`
-
-The number of features that will be executed in parallel.
-
-Note: This feature is supported for cucumber v@0.7.0 or lesser
-
 #### options.rerun
 Type: `String`
 Default: `undefined`
@@ -210,6 +204,13 @@ It will record all the failed scenarios to `@rerun.txt`.
 Take a look at `options.formats` to generate html report
 
 * Run failed scenarios by passing `--rerun=path/to/@rerun.txt` grunt option
+
+
+#### options.compiler
+Type: `String`
+
+Sets the Cucumber Compiler options. It can also be set by passing through command line `--compiler`
+
 
 ### Attaching Screenshots to grunt-cucumberjs HTML report
 

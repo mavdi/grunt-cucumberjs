@@ -57,6 +57,6 @@
     "jsonfile": "^2.2.1",
     "commondir": "~0.0.1",
     "cucumber-parallel": "^0.1.9",
-    "underscore": "~1.5.2",
+    "underscore": "~1.5.2"
   }
 }

@@ -53,9 +53,10 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "underscore": "~1.5.2",
-    "commondir": "~0.0.1",
+    "js-base64": "^2.1.8",
     "jsonfile": "^2.2.1",
-    "js-base64": "^2.1.8"
+    "commondir": "~0.0.1",
+    "cucumber-parallel": "^0.1.9",
+    "underscore": "~1.5.2",
   }
 }

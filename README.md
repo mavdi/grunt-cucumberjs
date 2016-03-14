@@ -162,9 +162,18 @@ Type: `Boolean`
 Default: `'undefined'`
 Available: `['true', 'false']`
 
-A flag to enable Parallel execution. It requires dependency on [parallel-cucumber][6] npmjs module
+A flag to enable Parallel execution. 
 
-Note: This feature is supported for cucumber v@0.7.0 or lesser
+* For Cucumber version greater than v0.8.0
+
+  • You can run Cucumber Features and/or Scenarios Parallel
+  • `--parallel scenarios` runs scenarios parallel
+  • By default or `--parallel features` runs features in parallel 
+
+For more information visit [cucumber-parallel][8] module
+
+* For Cucumber version lesser than v0.8.0
+  • Requires dependency on [parallel-cucumber][6] npmjs module
 
 #### options.workers
 Type: `Number`
@@ -247,3 +256,4 @@ Please note that Pie Charts are available only for Bootstrap Theme
 [5]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_foundation.html "Foundation Theme Reports"
 [6]: https://www.npmjs.com/package/parallel-cucumber
 [7]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/report/report/cucumber_report.html "Pie Chart Reports"
+[8]: https://www.npmjs.com/package/cucumber-parallel

@@ -1,6 +1,7 @@
 # grunt-cucumberjs
 
 > Runs cucumberjs features and output results in various formats including html.
+> Runs cucumberjs features and/or scenarios in parallel.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -165,15 +166,18 @@ Available: `['true', 'false']`
 A flag to enable Parallel execution. 
 
 * For Cucumber version greater than v0.8.0
-
+```
   • You can run Cucumber Features and/or Scenarios Parallel
   • `--parallel scenarios` runs scenarios parallel
   • By default or `--parallel features` runs features in parallel 
+```
 
 For more information visit [cucumber-parallel][8] module
 
+
 * For Cucumber version lesser than v0.8.0
   • Requires dependency on [parallel-cucumber][6] npmjs module
+
 
 #### options.workers
 Type: `Number`

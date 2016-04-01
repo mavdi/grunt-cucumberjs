@@ -1,7 +1,7 @@
 {
   "name": "grunt-cucumberjs",
   "description": "Generates documentation from Cucumber features",
-  "version": "0.8.9",
+  "version": "0.9.0",
   "homepage": "https://github.com/mavdi/grunt-cucumberjs",
   "author": {
     "name": "Mehdi Avdi",
@@ -11,19 +11,23 @@
     "type": "git",
     "url": "git://github.com/mavdi/grunt-cucumberjs.git"
   },
-  "contributors": [{
-    "name": "Andrew Keig",
-    "email": "andrew.keig@gmail.com",
-    "url": "https://github.com/AndrewKeig"
-  }, {
-    "name": "Jozz Hart",
-    "email": "me@jozzhart.com",
-    "url": "http://jozzhart.com"
-  }, {
-    "name": "Kushang Gajjar",
-    "email": "g.kushang@gmail.com",
-    "url": "https://github.com/gkushang"
-  }],
+  "contributors": [
+    {
+      "name": "Andrew Keig",
+      "email": "andrew.keig@gmail.com",
+      "url": "https://github.com/AndrewKeig"
+    },
+    {
+      "name": "Jozz Hart",
+      "email": "me@jozzhart.com",
+      "url": "http://jozzhart.com"
+    },
+    {
+      "name": "Kushang Gajjar",
+      "email": "g.kushang@gmail.com",
+      "url": "https://github.com/gkushang"
+    }
+  ],
   "dependencies": {
     "commondir": "^1.0.1",
     "cucumber-parallel": "^0.1.9",
@@ -45,10 +49,12 @@
   "bugs": {
     "url": "https://github.com/mavdi/grunt-cucumberjs/issues"
   },
-  "licenses": [{
-    "type": "MIT",
-    "url": "https://github.com/mavdi/grunt-cucumberjs/blob/master/LICENSE-MIT"
-  }],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/mavdi/grunt-cucumberjs/blob/master/LICENSE-MIT"
+    }
+  ],
   "main": "Gruntfile.js",
   "engines": {
     "node": ">= 0.8.0"

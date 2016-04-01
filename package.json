@@ -24,6 +24,24 @@
     "email": "g.kushang@gmail.com",
     "url": "https://github.com/gkushang"
   }],
+  "dependencies": {
+    "commondir": "^1.0.1",
+    "cucumber-parallel": "^0.1.9",
+    "js-base64": "^2.1.9",
+    "jsonfile": "^2.2.3",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "cucumber": "^0.4.8",
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-jsbeautifier": "^0.2.10"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
   "bugs": {
     "url": "https://github.com/mavdi/grunt-cucumberjs/issues"
   },
@@ -38,24 +56,7 @@
   "scripts": {
     "test": "grunt"
   },
-  "devDependencies": {
-    "cucumber": "^0.4.8",
-    "grunt": "~0.4.5",
-    "grunt-cli": "~0.1.13",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-jsbeautifier": "^0.2.10"
-  },
-  "peerDependencies": {
-    "grunt": "~0.4.5"
-  },
   "keywords": [
     "gruntplugin"
-  ],
-  "dependencies": {
-    "underscore": "~1.5.2",
-    "commondir": "~0.0.1",
-    "jsonfile": "^2.2.1",
-    "js-base64": "^2.1.8"
-  }
+  ]
 }

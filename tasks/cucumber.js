@@ -93,6 +93,18 @@ module.exports = function(grunt) {
             commands.push('--dry-run');
         }
 
+        if (grunt.cli.options['parallel']) {
+            commands.push('--parallel', grunt.cli.options['parallel']);
+        } else  if (options.parallel) {
+            commands.push('--parallel', options.parallel);
+        }
+
+        if (grunt.cli.options['compiler']) {
+            commands.push('--compiler', grunt.cli.options['compiler']);
+        } else if (options.compiler) {
+            commands.push('--compiler', options.compiler);
+        }
+
         if (options.require) {
             if (options.require instanceof Array) {
                 options.require.forEach(function(element, index, array) {

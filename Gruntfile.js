@@ -23,6 +23,12 @@ module.exports = function(grunt) {
         report.assert(options.output);
     }
 
+    function setParallelMode() {
+        options.executeParallel = true;
+        options.parallel = 'scenarios';
+        return options;
+    }
+
     // Project configuration.
     grunt.initConfig({
         jshint: {
@@ -47,6 +53,7 @@ module.exports = function(grunt) {
             options: options,
             src: ['test/features']
         },
+
         jsbeautifier: {
             src: ['<%= jshint.all %>']
         }
@@ -60,7 +67,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.registerTask('assertReport', assertReport);
-    // By default, lint and run all tests.
-    grunt.registerTask('test', ['jshint', 'jsbeautifier', 'clean', 'cucumberjs', 'assertReport']);
+    grunt.registerTask('setParallelMode', setParallelMode);
 
+    // By default, lint and run all tests.
+    grunt.registerTask('test', ['jshint', 'jsbeautifier', 'clean', 'cucumberjs', 'assertReport',
+        'clean', 'setParallelMode', 'cucumberjs', 'assertReport'
+    ]);
 };

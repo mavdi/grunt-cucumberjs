@@ -70,7 +70,7 @@ module.exports = function(grunt) {
     grunt.registerTask('setParallelMode', setParallelMode);
 
     // By default, lint and run all tests.
-    grunt.registerTask('test', ['jshint', 'jsbeautifier', 'clean', 'cucumberjs', 'assertReport',
+    grunt.registerTask('default', ['jshint', 'jsbeautifier', 'clean', 'cucumberjs', 'assertReport',
         'clean', 'setParallelMode', 'cucumberjs', 'assertReport'
     ]);
 };

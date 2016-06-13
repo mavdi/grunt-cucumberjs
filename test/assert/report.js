@@ -12,6 +12,7 @@ module.exports = {
         function assertJsonContents() {
             var jsonOutput = require('../../' + jsonFile);
             var jsonOutputStringify = JSON.stringify(jsonOutput);
+
             //verify screenshot is attached to the report
             expect(jsonOutputStringify).to.contain('mime_type":"image/png"', 'screenshot was not attached to report');
             

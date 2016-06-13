@@ -1,4 +1,4 @@
-<% _.each(suite.features, function(feature, featureIndex) { %> 
+<% _.each(suite.features, function(feature, featureIndex) { %>
 <% if (featureIndex === 0 || featureIndex % 2 === 0) { %>
 <div class="row">
 <% } %>
@@ -21,7 +21,7 @@
       </div>
       <div id="collapseFeature<%= featureIndex %>" class="panel-collapse collapse">
         <div class="panel-body">
-          <% _.each(feature.elements, function(element, scenarioIndex) { %> 
+          <% _.each(feature.elements, function(element, scenarioIndex) { %>
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
@@ -40,7 +40,7 @@
               </div>
               <div id="collapseScenario<%= featureIndex %><%= scenarioIndex %>" class="panel-collapse collapse">
                 <div class="panel-body">
-                  <% _.each(element.steps, function(step, stepIndex) { %> 
+                  <% _.each(element.steps, function(step, stepIndex) { %>
                     <p class="scenario-container">
                     <% if(step.result) { %>
                       <% if(step.result.status === 'passed') { %>
@@ -53,7 +53,25 @@
                         <span class="label label-primary" title="Undefined"><i class="glyphicon glyphicon-flash"></i></span>
                       <% } %>
                     <% } %>
-                      <span class="text"><span class="keyword highlight"><%= step.keyword %></span> <%= step.name %></span>
+                      <span class="text">
+                        <span class="keyword highlight"><%= step.keyword %></span>
+                        <%= step.name %>
+                        <% for( var i = 0; i < step.arguments.length; i++ ) { %>
+                          <table class="arguments">
+                            <% var rows = step.arguments[i]["rows"]; %>
+                            <% for( var j = 0; j < rows.length; j++ ) { %>
+                              <tr>
+                              <% var cells = rows[j]["cells"]; %>
+                              <% for( var k = 0; k < cells.length; k++ ) { %>
+                                <td>
+                                  <%= cells[k] %>
+                                </td>
+                              <% } %>
+                              </tr>
+                            <% } %>
+                          </table>
+                        <% } %>
+                      </span>
                     <% if(step.result) { %>
                       <% if(step.result.status === 'undefined') { %>
                         <pre>
@@ -64,7 +82,7 @@ this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function
                       <% } %>
 
                       <% if (step.result.error_message) { %>
-                        <a href="#error<%= featureIndex %><%= scenarioIndex %><%= stepIndex %>" data-toggle="collapse">+ Show Error</a> 
+                        <a href="#error<%= featureIndex %><%= scenarioIndex %><%= stepIndex %>" data-toggle="collapse">+ Show Error</a>
                         <div id="error<%= featureIndex %><%= scenarioIndex %><%= stepIndex %>" class="collapse">
                           <%= step.result.error_message %>
                         </div>
@@ -85,12 +103,12 @@ this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function
                        <% } %>
 
                     <% } %>
-                    </p>              
+                    </p>
                   <% }); %>
                 </div>
               </div>
             </div>
-          <% }); %> 
+          <% }); %>
         </div>
       </div>
     </div>
@@ -98,4 +116,4 @@ this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function
   <% if ((featureIndex != 0 && ((featureIndex + 1) % 2 == 0)) || (featureIndex === (suite.features.length -1))) { %>
 </div>
   <% } %>
-<% }); %> 
+<% }); %>

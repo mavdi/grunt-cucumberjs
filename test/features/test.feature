@@ -29,4 +29,4 @@ Feature: Grunt Cucumberjs Feature
       | 1  | data-A |
       | 2  | data-B |
     When he choose "html" output as one of the formatter
-    Then the output should contain test table attached in HTML format
+    Then the output should contain data table attached in HTML format

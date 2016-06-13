@@ -48,7 +48,7 @@ var steps = function() {
         callback();
     });
 
-    this.Then(/^the output should contain test table attached in HTML format$/, function (callback) {
+    this.Then(/^the output should contain data table attached in HTML format$/, function (callback) {
         // Write code here that turns the phrase above into concrete actions
         callback();
     });

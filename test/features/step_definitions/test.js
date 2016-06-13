@@ -42,6 +42,16 @@ var steps = function() {
     this.Then(/^the output should contain test data attached to the Given step in HTML format$/, function(callback) {
         callback();
     });
+
+    this.Given(/^Fred runs a passing scenario for the following data set$/, function (table, callback) {
+        // Write code here that turns the phrase above into concrete actions
+        callback();
+    });
+
+    this.Then(/^the output should contain test table attached in HTML format$/, function (callback) {
+        // Write code here that turns the phrase above into concrete actions
+        callback();
+    });
 };
 
 

@@ -81,11 +81,11 @@ module.exports = function(grunt) {
     grunt.registerTask('setMultiFormatter', setMultiFormatter);
     grunt.registerTask('setParallelMode', setParallelMode);
 
-    grunt.registerTask('singleFormatter', ['clean', 'setSingleFormatter', 'cucumberjs', 'assertReport']);
-    grunt.registerTask('multiFormatter', ['clean', 'setMultiFormatter', 'cucumberjs', 'assertReport']);
-    grunt.registerTask('parallelMode', ['clean', 'setParallelMode', 'cucumberjs', 'assertReport']);
+    grunt.registerTask('testSingleFormatter', ['clean', 'setSingleFormatter', 'cucumberjs', 'assertReport']);
+    grunt.registerTask('testMultiFormatter', ['clean', 'setMultiFormatter', 'cucumberjs', 'assertReport']);
+    grunt.registerTask('testParallelMode', ['clean', 'setParallelMode', 'cucumberjs', 'assertReport']);
 
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['jshint', 'jsbeautifier', 'singleFormatter', 'multiFormatter', 'parallelMode']);
+    grunt.registerTask('default', ['jshint', 'jsbeautifier', 'testSingleFormatter', 'testMultiFormatter', 'testParallelMode']);
 };

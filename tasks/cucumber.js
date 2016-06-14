@@ -14,7 +14,6 @@ module.exports = function(grunt) {
         var options = this.options({
             output: 'features_report.html',
             format: 'html',
-            saveJson: false,
             theme: 'foundation',
             templateDir: 'features/templates',
             tags: '',
@@ -78,7 +77,7 @@ module.exports = function(grunt) {
                     options.isHtml = true;
                     commands.push('-f', 'json:' + options.output + '.json');
                 } else {
-                    commands.push('-f', format);
+                    commands.push('-f', 'json:' + options.output + '.json');
                 }
             });
         } else if (options.format) {

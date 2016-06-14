@@ -14,7 +14,6 @@ module.exports = function(grunt) {
         formats: ['html', 'pretty'],
         templateDir: 'templates/bootstrap',
         output: 'test/report/features_report.html',
-        saveJson: true,
         debug: true,
         theme: 'bootstrap'
     };

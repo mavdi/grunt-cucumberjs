@@ -64,7 +64,7 @@ module.exports = function(grunt) {
 
         if (options.tags) {
             if (options.tags instanceof Array) {
-                options.tags.forEach(function(element, index, array) {
+                options.tags.forEach(function(element) {
                     commands.push('-t', element);
                 });
             } else {
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
                 } else {
                     commands.push('-f', format);
                 }
-            })
+            });
         } else if (options.format) {
             applyLegacyFormatters();
         }
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
 
         if (grunt.cli.options['parallel']) {
             commands.push('--parallel', grunt.cli.options['parallel']);
-        } else  if (options.parallel) {
+        } else if (options.parallel) {
             commands.push('--parallel', options.parallel);
         }
 
@@ -107,7 +107,7 @@ module.exports = function(grunt) {
 
         if (options.require) {
             if (options.require instanceof Array) {
-                options.require.forEach(function(element, index, array) {
+                options.require.forEach(function(element) {
                     commands.push('--require', element);
                 });
             } else {

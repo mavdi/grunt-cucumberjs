@@ -7,8 +7,36 @@
  */
 
 'use strict';
+var report = require('./test/assert/report');
 
 module.exports = function(grunt) {
+    var options = {
+        templateDir: 'templates/bootstrap',
+        output: 'test/report/features_report.html',
+        saveJson: true,
+        debug: true,
+        theme: 'bootstrap'
+    };
+
+    function assertReport() {
+        report.assert(options.output);
+    }
+
+    function setParallelMode() {
+        options.executeParallel = true;
+        options.parallel = 'scenarios';
+        return options;
+    }
+
+    function setSingleFormatter() {
+        options.format = 'html';
+        return options;
+    }
+
+    function setMultiFormatter() {
+        options.formats = ['html', 'pretty'];
+        return options;
+    }
 
     // Project configuration.
     grunt.initConfig({
@@ -26,23 +54,15 @@ module.exports = function(grunt) {
 
         // Before generating any new files, remove any previously-created files.
         clean: {
-            tests: ['tmp']
+            tests: ['test/report/*.json', 'test/report/*.html', 'test/report/screenshot/*.png']
         },
 
         // Configuration to be run (and then tested).
         cucumberjs: {
-
-            options: {
-                steps: '',
-                tags: '',
-                templateDir: 'templates/simple',
-                output: 'tmp/features_report.html',
-                format: 'html',
-                cucumber: '',
-                failFast:false
-            },
-            features: []
+            options: options,
+            src: ['test/features']
         },
+
         jsbeautifier: {
             src: ['<%= jshint.all %>']
         }
@@ -56,7 +76,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-jsbeautifier');
 
-    // By default, lint and run all tests.
-    grunt.registerTask('default', ['jshint', 'jsbeautifier', 'cucumberjs']);
+    grunt.registerTask('assertReport', assertReport);
+    grunt.registerTask('setSingleFormatter', setSingleFormatter);
+    grunt.registerTask('setMultiFormatter', setMultiFormatter);
+    grunt.registerTask('setParallelMode', setParallelMode);
 
+    grunt.registerTask('testSingleFormatter', ['clean', 'setSingleFormatter', 'cucumberjs', 'assertReport']);
+    grunt.registerTask('testMultiFormatter', ['clean', 'setMultiFormatter', 'cucumberjs', 'assertReport']);
+    grunt.registerTask('testParallelMode', ['clean', 'setParallelMode', 'cucumberjs', 'assertReport']);
+
+
+    // By default, lint and run all tests.
+    grunt.registerTask('default', ['jshint', 'jsbeautifier', 'testSingleFormatter', 'testMultiFormatter', 'testParallelMode']);
 };

@@ -1,6 +1,7 @@
 
 var steps = function() {
     this.Before(function(scenario, callback) {
+        console.log('console logs should not break the report');
         this.scenario = scenario;
         callback();
     });

@@ -28,11 +28,7 @@ module.exports = function(grunt) {
         var applyLegacyFormatters = function() {
             if (options.format === 'html') {
                 options.isHtml = true;
-                if (options.executeParallel) {
-                    commands.push('-f', 'json:' + options.output + '.json');
-                } else {
-                    commands.push('-f', 'json');
-                }
+                commands.push('-f', 'json:' + options.output + '.json');
             } else {
                 commands.push('-f', options.format);
             }
@@ -77,7 +73,7 @@ module.exports = function(grunt) {
                     options.isHtml = true;
                     commands.push('-f', 'json:' + options.output + '.json');
                 } else {
-                    commands.push('-f', 'json:' + options.output + '.json');
+                    commands.push('-f', options.format);
                 }
             });
         } else if (options.format) {

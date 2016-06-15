@@ -56,21 +56,23 @@
                       <span class="text">
                         <span class="keyword highlight"><%= step.keyword %></span>
                         <%= step.name %>
-                        <% for( var i = 0; i < step.arguments.length; i++ ) { %>
-                          <table class="arguments">
-                            <% var rows = step.arguments[i]["rows"]; %>
-                            <% for( var j = 0; j < rows.length; j++ ) { %>
-                              <tr>
-                              <% var cells = rows[j]["cells"]; %>
-                              <% for( var k = 0; k < cells.length; k++ ) { %>
-                                <td>
-                                  <%= cells[k] %>
-                                </td>
-                              <% } %>
-                              </tr>
+                         <% if(step.arguments) { %>
+                            <% for( var i = 0; i < step.arguments.length; i++ ) { %>
+                              <table class="arguments">
+                                <% var rows = step.arguments[i]["rows"]; %>
+                                <% for( var j = 0; j < rows.length; j++ ) { %>
+                                  <tr>
+                                  <% var cells = rows[j]["cells"]; %>
+                                  <% for( var k = 0; k < cells.length; k++ ) { %>
+                                    <td>
+                                      <%= cells[k] %>
+                                    </td>
+                                  <% } %>
+                                  </tr>
+                                <% } %>
+                              </table>
                             <% } %>
-                          </table>
-                        <% } %>
+                          <% } %>
                       </span>
                     <% if(step.result) { %>
                       <% if(step.result.status === 'undefined') { %>

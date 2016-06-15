@@ -73,7 +73,7 @@ module.exports = function(grunt) {
                     options.isHtml = true;
                     commands.push('-f', 'json:' + options.output + '.json');
                 } else {
-                    commands.push('-f', options.format);
+                    commands.push('-f', format);
                 }
             });
         } else if (options.format) {

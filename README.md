@@ -118,28 +118,20 @@ Available: `['pretty', 'progress', 'summary', 'html']`
 
 e.g. `formats: ['html', 'pretty']`
 
-Note: `html` formatter will provide Json as well as `html` report. Multiple formatter is supported for cucumber v@0.8.0 or higher
-
-#### options.saveJson
-Type: `Boolean`
-Default: `'false'`
-Available: `['true', 'false']`
-
-To keep or not the generated json file, applicable for options.format = html only.
-It will be saved as options.output + '.json'
+Note: `html` formatter will provide Json as well as `html` report. Multiple formatter is supported for cucumber v@0.8.0 or higher.
 
 #### options.executeParallel
 Type: `Boolean`
 Default: `'undefined'`
 Available: `['true', 'false']`
 
-A flag to enable Parallel execution. 
+A flag to enable Parallel execution.
 
 * For Cucumber version latest or greater than v0.8.0
 ```
   • You can run Cucumber Features and/or Scenarios Parallel
   • `--parallel scenarios` runs scenarios parallel
-  • By default or `--parallel features` runs features in parallel 
+  • By default or `--parallel features` runs features in parallel
 ```
 
 For more information visit [cucumber-parallel][8] module
@@ -199,7 +191,7 @@ options: {
      ....
 }
 ```
-It will record all the failed scenarios to `@rerun.txt`. 
+It will record all the failed scenarios to `@rerun.txt`.
 
 Take a look at `options.formats` to generate html report
 

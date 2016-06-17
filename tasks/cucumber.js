@@ -14,7 +14,6 @@ module.exports = function(grunt) {
         var options = this.options({
             output: 'features_report.html',
             format: 'html',
-            saveJson: false,
             theme: 'foundation',
             templateDir: 'features/templates',
             tags: '',
@@ -29,11 +28,7 @@ module.exports = function(grunt) {
         var applyLegacyFormatters = function() {
             if (options.format === 'html') {
                 options.isHtml = true;
-                if (options.executeParallel) {
-                    commands.push('-f', 'json:' + options.output + '.json');
-                } else {
-                    commands.push('-f', 'json');
-                }
+                commands.push('-f', 'json:' + options.output + '.json');
             } else {
                 commands.push('-f', options.format);
             }

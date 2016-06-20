@@ -15,3 +15,5 @@
 * Support for Cucumber@1.0.0
 
 * Print Scenarios Data Table on the HTML report
+
+* Deprecated Console logs on HTML report. Instead, use `scenario.attach('text')` 

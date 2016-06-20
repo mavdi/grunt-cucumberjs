@@ -204,13 +204,13 @@ Type: `String`
 Sets the Cucumber Compiler options. It can also be set by passing through command line `--compiler`
 
 
-#### options.reportSuiteAsScenario
+#### options.reportSuiteAsScenarios
 Type: `Boolean`
 Default: `'false'`
 Available: `['true', 'false']`
 
-Reports the total number of failed/passed Scenarios if set to `true`. 
-If set to `false` or `undefined`, reports total number of failed/passed Features
+Reports total number of failed/passed Scenarios in headers if set to `true`. 
+Reports total number of failed/passed Features in headers if set to `false` or `undefined`.
 
 
 ### Attaching Screenshots to grunt-cucumberjs HTML report

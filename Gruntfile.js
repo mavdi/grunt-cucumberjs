@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         output: 'test/report/features_report.html',
         theme: 'bootstrap',
         debug: true,
-        reportSuiteAsScenarios: false
+        reportSuiteAsScenarios: true
     };
 
     function assertReport() {

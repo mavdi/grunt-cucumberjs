@@ -1,4 +1,4 @@
-Feature: Un Happy HTML reporting
+Feature: Unhappy HTML reporting
 
   In order to review cucumber reports
   Fred, a cucumber user

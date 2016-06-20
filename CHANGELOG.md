@@ -12,3 +12,6 @@
         Reports total number of failed/passed Scenarios in headers if set to `true`. 
         Reports total number of failed/passed Features in headers if set to `false` or `undefined`.
 
+* Support for Cucumber@1.0.0
+
+* Print Scenarios Data Table on the HTML report

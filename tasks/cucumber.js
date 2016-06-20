@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             debug: false,
             debugger: false,
             failFast: false,
-            reportAsScenario: false
+            reportSuiteAsScenarios: false
         });
 
         var handler = options.debugger ? require('../lib/requireHandler') : require('../lib/processHandler');

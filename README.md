@@ -204,6 +204,15 @@ Type: `String`
 Sets the Cucumber Compiler options. It can also be set by passing through command line `--compiler`
 
 
+#### options.reportSuiteAsScenario
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+Reports the total number of failed/passed Scenarios if set to `true`. 
+If set to `false` or `undefined`, reports total number of failed/passed Features
+
+
 ### Attaching Screenshots to grunt-cucumberjs HTML report
 
 If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach screenshots to grunt-cucumberjs HTML report. Typically screenshots are taken after a test failure to help debug what went wrong when analyzing results, for example

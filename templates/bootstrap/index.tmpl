@@ -64,8 +64,8 @@
         google.load("visualization", "1", {packages: ["corechart"]});
         google.setOnLoadCallback(function() {drawChart({
                                                             "title" : "Features",
-                                                            "failed" : <%= suite.failed %>,
-                                                            "passed" : <%= suite.passed %>
+                                                            "failed" : <%= suite.features.failed %>,
+                                                            "passed" : <%= suite.features.passed %>
                                                         })
                                             });
         google.setOnLoadCallback(function() {drawChart({

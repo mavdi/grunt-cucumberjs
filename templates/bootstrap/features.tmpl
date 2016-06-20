@@ -1,4 +1,4 @@
-<% _.each(suite.features, function(feature, featureIndex) { %>
+<% _.each(suite.features.featureOutput, function(feature, featureIndex) { %>
 <% if (featureIndex === 0 || featureIndex % 2 === 0) { %>
 <div class="row">
 <% } %>
@@ -115,7 +115,7 @@ this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function
       </div>
     </div>
   </div>
-  <% if ((featureIndex != 0 && ((featureIndex + 1) % 2 == 0)) || (featureIndex === (suite.features.length -1))) { %>
+  <% if ((featureIndex != 0 && ((featureIndex + 1) % 2 == 0)) || (featureIndex === (suite.features.featureOutput.length -1))) { %>
 </div>
   <% } %>
 <% }); %>

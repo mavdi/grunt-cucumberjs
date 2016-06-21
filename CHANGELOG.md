@@ -24,7 +24,7 @@
                 reportSuiteAsScenarios: true,
                 executeParallel: grunt.option('executeParallel') || false,
                 require: grunt.option('require', 'test/step_definitions/'),
-            }
+            },
             src: ['test/features']
         }
         ```

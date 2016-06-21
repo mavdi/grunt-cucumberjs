@@ -3,7 +3,7 @@
 #### New Features
 
 * Report Suite As a Scenarios
-    * options.reportSuiteAsScenarios
+    * `options.reportSuiteAsScenarios`
         
         Type: `Boolean`
         Default: `'false'`

@@ -1,4 +1,5 @@
-# grunt-cucumberjs
+grunt-cucumberjs
+================
 
 > Runs cucumberjs features and output results in various formats including html.
 
@@ -20,7 +21,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-cucumberjs');
 ```
 
-### Sample HTML Reports 
+## Sample HTML Reports 
 
 1. [Bootstrap Theme Reports][3]
 2. [Foundation Theme Reports][4]

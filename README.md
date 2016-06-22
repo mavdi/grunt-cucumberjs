@@ -249,7 +249,7 @@ this.After(function (scenario, callback) {
 
 ### Pie Charts
 
-Sample pie chart is available at [Bootstrap Theme Report with Pie Chart][7]
+Sample pie chart is available at [Bootstrap Theme Report with Pie Chart][3]
 
 Two pie charts are displayed on report
 
@@ -264,5 +264,4 @@ Please note that Pie Charts are available only for Bootstrap Theme
 [4]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-foundation.html "Foundation Theme Reports"
 [5]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-simple.html "Simple Theme Reports"
 [6]: https://www.npmjs.com/package/parallel-cucumber
-[7]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/report/report/cucumber_report.html "Pie Chart Reports"
 [8]: https://www.npmjs.com/package/cucumber-parallel

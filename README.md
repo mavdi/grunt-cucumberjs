@@ -23,7 +23,7 @@ grunt.loadNpmTasks('grunt-cucumberjs');
 
 ## Sample HTML Reports 
 
-1. [Bootstrap Theme Reports][3]
+1. [Bootstrap Theme Reports with Pie Chart][3]
 2. [Foundation Theme Reports][4]
 3. [Simple Theme Reports][5]
 

@@ -5,6 +5,15 @@
 > Runs cucumberjs features and/or scenarios in parallel.
 
 
+### Sample HTML Reports 
+
+1. [Bootstrap Theme Reports][3]
+2. [Foundation Theme Reports][4]
+3. [Simple Theme Reports][5]
+
+(note that javascript to collapse/expand a screenshots doesn't appear to respond in htmlpreview site below, but they should work fine on locally generated reports)
+
+
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
@@ -19,15 +28,6 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 ```js
 grunt.loadNpmTasks('grunt-cucumberjs');
 ```
-
-### Sample HTML Reports 
-
-1. [Bootstrap Theme Reports][3]
-2. [Foundation Theme Reports][4]
-3. [Simple Theme Reports][5]
-
-(note that javascript to collapse/expand a screenshots doesn't appear to respond in htmlpreview site below, but they should work fine on locally generated reports)
-
 
 ## The "cucumberjs" task
 

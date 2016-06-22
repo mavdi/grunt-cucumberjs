@@ -14,6 +14,10 @@ var steps = function() {
         callback();
     });
 
+    this.Given(/^Fred runs a passing cucumber scenario on behalf of "([^"]*)"/, function (name, callback) {
+        callback();
+    });
+    
     this.Then(/^he choose "([^"]*)" output as one of the formatter$/, function(arg1, callback) {
         callback();
     });
@@ -32,6 +36,18 @@ var steps = function() {
     });
 
     this.Then(/^the output should contain test results with screenshot in HTML format$/, function(callback) {
+        callback();
+    });
+
+    this.Then(/^he left one of the step as a pending$/, function(callback) {
+        callback();
+    });
+
+    this.Then(/^the output should contain the pending test in the HTML pie chart$/, function(callback) {
+        callback(null, 'pending');
+    });
+
+    this.Then(/^the output should contain the skipped steps in the HTML pie chart$/, function(callback) {
         callback();
     });
 

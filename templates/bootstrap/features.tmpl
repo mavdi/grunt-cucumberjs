@@ -1,4 +1,4 @@
-<% _.each(suite.features, function(feature, featureIndex) { %>
+<% _.each(suite.features.featureOutput, function(feature, featureIndex) { %>
 <% if (featureIndex === 0 || featureIndex % 2 === 0) { %>
 <div class="row">
 <% } %>
@@ -11,10 +11,10 @@
             <i class="glyphicon glyphicon-chevron-down"></i>
             <b><%= feature.keyword %>:</b><%= feature.name %>
             <span class="label-container">
-              <% if (feature.passed) { %><span class="label label-success"><%= feature.passed %></span><% } %>
-              <% if (feature.failed) { %><span class="label label-danger"><%= feature.failed %></span><% } %>
-              <% if (feature.notdefined) { %><span class="label label-info"><%= feature.notdefined %></span><% } %>
-              <% if (feature.skipped) { %><span class="label label-warning"><%= feature.skipped %></span><% } %>
+              <% if (feature.scenarios.passed) { %><span class="label label-success"><%= feature.scenarios.passed %></span><% } %>
+              <% if (feature.scenarios.failed) { %><span class="label label-danger"><%= feature.scenarios.failed %></span><% } %>
+              <% if (feature.scenarios.notdefined) { %><span class="label label-info"><%= feature.scenarios.notdefined %></span><% } %>
+              <% if (feature.scenarios.skipped) { %><span class="label label-warning"><%= feature.scenarios.skipped %></span><% } %>
             </span>
           </a>
         </h4>
@@ -115,7 +115,7 @@ this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function
       </div>
     </div>
   </div>
-  <% if ((featureIndex != 0 && ((featureIndex + 1) % 2 == 0)) || (featureIndex === (suite.features.length -1))) { %>
+  <% if ((featureIndex != 0 && ((featureIndex + 1) % 2 == 0)) || (featureIndex === (suite.features.featureOutput.length -1))) { %>
 </div>
   <% } %>
 <% }); %>

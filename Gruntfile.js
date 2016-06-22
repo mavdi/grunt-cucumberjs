@@ -13,8 +13,9 @@ module.exports = function(grunt) {
     var options = {
         templateDir: 'templates/bootstrap',
         output: 'test/report/features_report.html',
+        theme: 'bootstrap',
         debug: true,
-        theme: 'bootstrap'
+        reportSuiteAsScenarios: true
     };
 
     function assertReport() {

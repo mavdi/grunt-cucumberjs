@@ -30,10 +30,9 @@
   ],
   "dependencies": {
     "commondir": "^1.0.1",
-    "cucumber-parallel": "^0.1.9",
+    "cucumber-parallel": "^0.1.10",
     "js-base64": "^2.1.9",
     "jsonfile": "^2.2.3",
-    "node-version-compare": "^1.0.1",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

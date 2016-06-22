@@ -1,4 +1,5 @@
-# grunt-cucumberjs
+grunt-cucumberjs
+================
 
 > Runs cucumberjs features and output results in various formats including html.
 
@@ -19,6 +20,12 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 ```js
 grunt.loadNpmTasks('grunt-cucumberjs');
 ```
+
+## Sample HTML Reports 
+
+1. [Bootstrap Theme Reports with Pie Chart][3]
+2. [Foundation Theme Reports][4]
+3. [Simple Theme Reports][5]
 
 ## The "cucumberjs" task
 
@@ -204,6 +211,15 @@ Type: `String`
 Sets the Cucumber Compiler options. It can also be set by passing through command line `--compiler`
 
 
+#### options.reportSuiteAsScenarios
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+Reports total number of failed/passed Scenarios in headers if set to `true`. 
+Reports total number of failed/passed Features in headers if set to `false` or `undefined`.
+
+
 ### Attaching Screenshots to grunt-cucumberjs HTML report
 
 If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach screenshots to grunt-cucumberjs HTML report. Typically screenshots are taken after a test failure to help debug what went wrong when analyzing results, for example
@@ -230,15 +246,10 @@ this.After(function (scenario, callback) {
   scenario.attach("test data goes here");
 });
 ```
-Below are some sample HTML reports with screenshots (note that javascript to collapse/expand a screenshots doesn't appear to respond in htmlpreview site below, but they should work fine on locally generated reports,
-
-1. [Bootstrap Theme Reports][3]
-2. [Simple Theme Reports][4]
-3. [Foundation Theme Reports][5]
 
 ### Pie Charts
 
-Sample pie chart is available at [Bootstrap Theme Report with Pie Chart][7]
+Sample pie chart is available at [Bootstrap Theme Report with Pie Chart][3]
 
 Two pie charts are displayed on report
 
@@ -249,9 +260,8 @@ Please note that Pie Charts are available only for Bootstrap Theme
 
 [1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"
 [2]: https://github.com/cucumber/cucumber-js "cucumber-js"
-[3]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_bootstrap.html "Bootstrap Theme Reports"
-[4]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_simple.html "Simple Theme Reports"
-[5]: http://htmlpreview.github.io/?https://github.com/nikulkarni/grunt-cucumberjs/blob/screenshot/report/cucumber_report_foundation.html "Foundation Theme Reports"
+[3]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-bootstrap.html "Bootstrap Theme Reports"
+[4]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-foundation.html "Foundation Theme Reports"
+[5]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-simple.html "Simple Theme Reports"
 [6]: https://www.npmjs.com/package/parallel-cucumber
-[7]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/report/report/cucumber_report.html "Pie Chart Reports"
 [8]: https://www.npmjs.com/package/cucumber-parallel

@@ -1,4 +1,10 @@
-### 1.0.0 (2016-06-22)
+### 0.10.1 (2016-06-22)
+
+#### Bug fixes
+
+* Fixed `chai` dependencies for /test
+
+### 0.10.0 (2016-06-21)
 
 #### New Features
 

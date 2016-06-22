@@ -6,7 +6,7 @@ Feature: Unhappy HTML reporting
 
 
   @attachScreenshot
-  Scenario: Fred wants to see failing scenarios on the HTML report
+  Scenario: Fred wants to see a Screenshot attached to the HTML report
     Given Fred runs a failing cucumber scenario
     When he choose "html" output as one of the formatter
     And a failing scenario captures a screenshot

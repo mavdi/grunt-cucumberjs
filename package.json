@@ -29,8 +29,8 @@
     }
   ],
   "dependencies": {
-    "chai": "^1.10.0",
-    "chai-fs": "^0.1.0",
+    "chai": "1.10.0",
+    "chai-fs": "0.1.0",
     "commondir": "^1.0.1",
     "cucumber-parallel": "^0.1.10",
     "js-base64": "^2.1.9",

@@ -3,6 +3,7 @@ var fs = require('fs');
 var chai = require('chai');
 chai.use(require('chai-fs'));
 var expect = chai.expect;
+var config = require('../config/config.json');
 
 module.exports = {
 
@@ -12,6 +13,15 @@ module.exports = {
         function assertJsonContents() {
             var jsonOutput = require('../../' + jsonFile);
             var jsonOutputStringify = JSON.stringify(jsonOutput);
+
+
+            //verify number of scenarios
+            var numberOfScenarios = 0;
+            jsonOutput.forEach(function(feature) {
+                numberOfScenarios += feature.elements.length;
+            });
+
+            expect(numberOfScenarios).to.be.equal(config.scenario.totalScenarios, 'Scenarios are missing in the report');
 
             //verify screenshot is attached to the report
             expect(jsonOutputStringify).to.contain('mime_type":"image/png"', 'screenshot was not attached to report');

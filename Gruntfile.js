@@ -7,7 +7,7 @@
  */
 
 'use strict';
-var report = require('./test/assert/report');
+var assertReport = require('./test/assert/assertReport');
 
 module.exports = function(grunt) {
     var options = {
@@ -18,8 +18,8 @@ module.exports = function(grunt) {
         reportSuiteAsScenarios: true
     };
 
-    function assertReport() {
-        report.assert(options.output);
+    function verifyReport() {
+        assertReport.assert(options.output);
     }
 
     function setParallelMode() {
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-jsbeautifier');
 
-    grunt.registerTask('assertReport', assertReport);
+    grunt.registerTask('assertReport', verifyReport);
     grunt.registerTask('setSingleFormatter', setSingleFormatter);
     grunt.registerTask('setMultiFormatter', setMultiFormatter);
     grunt.registerTask('setParallelMode', setParallelMode);

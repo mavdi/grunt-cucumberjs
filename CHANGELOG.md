@@ -1,6 +1,13 @@
-### 0.10.1 (2016-06-22)
+### 0.10.2 (2016-06-23)
 
-#### Bug fixes
+* Show Project Name and Project Version on Foundation theme report
+* Fixed the report generation time-stamp on Bootstrap & Foundation themes
+    * e.g. Generated 2 days ago
+* Fixed custom user defined HTML template
+* Added a tests to validate number scenarios reported on JSON
+
+
+### 0.10.1 (2016-06-22)
 
 * Fixed `chai` dependencies for /test
 

@@ -4,7 +4,7 @@
 * Fixed the report generation time-stamp on Bootstrap & Foundation themes
     * e.g. Generated 2 days ago
 * Fixed custom user defined HTML template
-* Added a tests to validate number scenarios reported on JSON
+* Added a tests to validate number of scenarios reported on JSON
 
 
 ### 0.10.1 (2016-06-22)

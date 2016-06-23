@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cucumber Feature Tests</title>
+    <title>Cucumber Feature Report</title>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <style type="text/css">
       <%= styles %>
@@ -43,8 +43,8 @@
         google.load("visualization", "1", {packages: ["corechart"]});
         google.setOnLoadCallback(function() {drawChart({
                                                             "title" : "Features",
-                                                            "failed" : <%= suite.features.failed %>,
-                                                            "passed" : <%= suite.features.passed %>
+                                                            "failed" : <%= suite.features.summary.failed %>,
+                                                            "passed" : <%= suite.features.summary.passed %>
                                                         })
                                             });
         google.setOnLoadCallback(function() {drawChart({

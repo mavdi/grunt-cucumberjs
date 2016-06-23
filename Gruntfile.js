@@ -11,8 +11,9 @@ var report = require('./test/assert/assertReport');
 
 module.exports = function(grunt) {
     var options = {
-        templateDir: 'templates/foundation',
+        templateDir: 'templates/bootstrap',
         output: 'test/report/features_report.html',
+        theme: 'bootstrap',
         debug: true,
         reportSuiteAsScenarios: true
     };

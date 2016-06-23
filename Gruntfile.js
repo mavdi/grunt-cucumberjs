@@ -7,13 +7,12 @@
  */
 
 'use strict';
-var report = require('./test/assert/report');
+var report = require('./test/assert/assertReport');
 
 module.exports = function(grunt) {
     var options = {
-        templateDir: 'templates/bootstrap',
+        templateDir: 'templates/foundation',
         output: 'test/report/features_report.html',
-        theme: 'bootstrap',
         debug: true,
         reportSuiteAsScenarios: true
     };

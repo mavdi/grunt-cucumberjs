@@ -32,10 +32,8 @@
     "chai": "1.10.0",
     "chai-fs": "0.1.0",
     "commondir": "^1.0.1",
-    "cucumber-parallel": "^0.1.10",
-    "js-base64": "^2.1.9",
-    "jsonfile": "^2.2.3",
-    "underscore": "^1.8.3"
+    "cucumber-html-reporter": "^0.1.2",
+    "cucumber-parallel": "^0.1.10"
   },
   "devDependencies": {
     "cucumber": "^1.0.0",

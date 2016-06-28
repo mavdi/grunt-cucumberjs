@@ -15,7 +15,6 @@ module.exports = function(grunt) {
             output: 'features_report.html',
             format: 'html',
             theme: 'foundation',
-            templateDir: 'features/templates',
             tags: '',
             require: '',
             debug: false,

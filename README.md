@@ -125,6 +125,8 @@ Available: `['pretty', 'progress', 'summary', 'html']`
 
 e.g. `formats: ['html', 'pretty']`
 
+Enable `debug: true` to print pretty console.
+
 Note: `html` formatter will provide Json as well as `html` report. Multiple formatter is supported for cucumber v@0.8.0 or higher.
 
 #### options.executeParallel

@@ -31,7 +31,7 @@
   "dependencies": {
     "chai": "1.10.0",
     "chai-fs": "0.1.0",
-    "cucumber-html-reporter": "^0.1.5",
+    "cucumber-html-reporter": "^0.2.0",
     "cucumber-parallel": "^0.1.10"
   },
   "devDependencies": {

@@ -27,6 +27,11 @@ grunt.loadNpmTasks('grunt-cucumberjs');
 2. [Foundation Theme Reports][4]
 3. [Simple Theme Reports][5]
 
+## Generate HTML Reports from Cucumber JSON files - An independent utility which does not require you to use `grunt`
+
+Take a look at [cucumber-html-reporter][9]
+
+
 ## The "cucumberjs" task
 
 ### Overview
@@ -267,3 +272,5 @@ Please note that Pie Charts are available only for Bootstrap Theme
 [5]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-simple.html "Simple Theme Reports"
 [6]: https://www.npmjs.com/package/parallel-cucumber
 [8]: https://www.npmjs.com/package/cucumber-parallel
+[9]: https://www.npmjs.com/package/cucumber-html-reporter
+

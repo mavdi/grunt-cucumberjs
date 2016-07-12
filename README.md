@@ -27,10 +27,6 @@ grunt.loadNpmTasks('grunt-cucumberjs');
 2. [Foundation Theme Reports][4]
 3. [Simple Theme Reports][5]
 
-## Generate HTML Reports from Cucumber JSON files - An independent utility which does not require you to use `grunt`
-
-Take a look at [cucumber-html-reporter][9]
-
 
 ## The "cucumberjs" task
 
@@ -263,7 +259,8 @@ Two pie charts are displayed on report
 1. Features: number of passed/failed features
 2. Scenarios: number of passed/failed/pending scenarios.
 
-Please note that Pie Charts are available only for Bootstrap Theme
+Please note that Pie Charts are available only for Bootstrap Theme. For more information take a look at [cucumber-html-reporter][9]
+
 
 [1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"
 [2]: https://github.com/cucumber/cucumber-js "cucumber-js"

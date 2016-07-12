@@ -1,11 +1,10 @@
-
 var steps = function() {
     this.Before(function(scenario, callback) {
         console.log('console logs should not break the report');
         this.scenario = scenario;
         callback();
     });
-    
+
     this.Then(/^this feature runs with background$/, function(callback) {
         callback();
     });
@@ -14,10 +13,10 @@ var steps = function() {
         callback();
     });
 
-    this.Given(/^Fred runs a passing cucumber scenario on behalf of "([^"]*)"/, function (name, callback) {
+    this.Given(/^Fred runs a passing cucumber scenario on behalf of "([^"]*)"/, function(name, callback) {
         callback();
     });
-    
+
     this.Then(/^he choose "([^"]*)" output as one of the formatter$/, function(arg1, callback) {
         callback();
     });
@@ -60,12 +59,12 @@ var steps = function() {
         callback();
     });
 
-    this.Given(/^Fred runs a passing scenario for the following data set$/, function (table, callback) {
+    this.Given(/^Fred runs a passing scenario for the following data set$/, function(table, callback) {
         // Write code here that turns the phrase above into concrete actions
         callback();
     });
 
-    this.Then(/^the output should contain data table attached in HTML format$/, function (callback) {
+    this.Then(/^the output should contain data table attached in HTML format$/, function(callback) {
         // Write code here that turns the phrase above into concrete actions
         callback();
     });

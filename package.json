@@ -29,10 +29,10 @@
     }
   ],
   "dependencies": {
-    "chai": "1.10.0",
-    "chai-fs": "0.1.0",
-    "cucumber-html-reporter": "^0.2.0",
-    "cucumber-parallel": "^0.1.10"
+    "chai": "^3.5.0",
+    "cucumber-html-reporter": "^0.2.1",
+    "cucumber-parallel": "^0.1.10",
+    "node-fs": "^0.1.7"
   },
   "devDependencies": {
     "cucumber": "^1.0.0",
@@ -49,6 +49,7 @@
   "bugs": {
     "url": "https://github.com/mavdi/grunt-cucumberjs/issues"
   },
+  "license": "MIT",
   "licenses": [
     {
       "type": "MIT",

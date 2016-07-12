@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 
         // Before generating any new files, remove any previously-created files.
         clean: {
-            tests: ['test/report/*.json', 'test/report/*.html', 'test/report/screenshot/*.png']
+            tests: ['test/report']
         },
 
         // Configuration to be run (and then tested).

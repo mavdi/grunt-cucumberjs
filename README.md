@@ -230,7 +230,7 @@ Please note that Pie Charts are available only for Bootstrap Theme.
 
 ### Tips
 
-For more info on Attaching Screenshots, Plain Texts, Pretty JSON to the HTML report, checkout the [cucumber-html-reporter][9]
+Take a look at [cucumber-html-reporter][9] for more information on <b> Attaching ScreenShots, Plain Texts, Pretty JSON </b> to the HTML report 
 
 
 [1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"

@@ -11,9 +11,8 @@ var assertReport = require('./test/assert/assertReport');
 
 module.exports = function(grunt) {
     var options = {
-        templateDir: 'templates/bootstrap',
-        output: 'test/report/features_report.html',
         theme: 'bootstrap',
+        output: 'test/report/features_report.html',
         debug: true,
         reportSuiteAsScenarios: true
     };
@@ -54,7 +53,7 @@ module.exports = function(grunt) {
 
         // Before generating any new files, remove any previously-created files.
         clean: {
-            tests: ['test/report/*.json', 'test/report/*.html', 'test/report/screenshot/*.png']
+            tests: ['test/report']
         },
 
         // Configuration to be run (and then tested).

@@ -7,6 +7,10 @@
  */
 
 'use strict';
+var fs = require('fs');
+var nodeFs = require('node-fs');
+var path = require('path');
+
 module.exports = function(grunt) {
     grunt.registerMultiTask('cucumberjs', 'Run cucumber.js features', function() {
         var done = this.async();
@@ -15,7 +19,6 @@ module.exports = function(grunt) {
             output: 'features_report.html',
             format: 'html',
             theme: 'foundation',
-            templateDir: 'features/templates',
             tags: '',
             require: '',
             debug: false,
@@ -128,6 +131,14 @@ module.exports = function(grunt) {
                 });
             });
         }
+
+        var createReportDirectoryIfNotExists = function() {
+            if (!fs.existsSync(options.output)) {
+                nodeFs.mkdirSync(path.dirname(options.output), parseInt('0777', 8), true);
+            }
+        };
+
+        createReportDirectoryIfNotExists();
 
         handler(grunt, options, commands, function handlerCallback(err) {
             if (err) {

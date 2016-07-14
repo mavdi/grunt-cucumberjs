@@ -27,6 +27,7 @@ grunt.loadNpmTasks('grunt-cucumberjs');
 2. [Foundation Theme Reports][4]
 3. [Simple Theme Reports][5]
 
+
 ## The "cucumberjs" task
 
 ### Overview
@@ -125,6 +126,8 @@ Available: `['pretty', 'progress', 'summary', 'html']`
 
 e.g. `formats: ['html', 'pretty']`
 
+Enable `debug: true` to print pretty console.
+
 Note: `html` formatter will provide Json as well as `html` report. Multiple formatter is supported for cucumber v@0.8.0 or higher.
 
 #### options.executeParallel
@@ -134,7 +137,6 @@ Available: `['true', 'false']`
 
 A flag to enable Parallel execution.
 
-* For Cucumber version latest or greater than v0.8.0
 ```
   • You can run Cucumber Features and/or Scenarios Parallel
   • `--parallel scenarios` runs scenarios parallel
@@ -143,12 +145,6 @@ A flag to enable Parallel execution.
 
 For more information visit [cucumber-parallel][8] module
 
-
-* For Cucumber version lesser than v0.8.0, it requires dependency on [parallel-cucumber][6] npmjs module
-```
-  • You can run only Cucumber Features in Parallel
-  • `--workers <number>` defines number of workers to run in parallel
-```
 
 #### options.failFast
 Type: `Boolean`
@@ -220,33 +216,6 @@ Reports total number of failed/passed Scenarios in headers if set to `true`.
 Reports total number of failed/passed Features in headers if set to `false` or `undefined`.
 
 
-### Attaching Screenshots to grunt-cucumberjs HTML report
-
-If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach screenshots to grunt-cucumberjs HTML report. Typically screenshots are taken after a test failure to help debug what went wrong when analyzing results, for example
-
-```javascript
-this.After(function (scenario, callback) {
-        if(scenario.isFailed()){
-            driver.takeScreenshot().then(function (buffer) {
-                scenario.attach(new Buffer(buffer, 'base64').toString('binary'), 'image/png');
-                 driver.quit().then(function () {
-                                callback();
-                 });
-            });
-        }
-});
-```
-
-### Add texts to the cucumber steps to grunt-cucumberjs HTML report
-
-If you are using [WebDriverJS][1] (or related framework) along with [cucumber-js][2] for browser automation, you can attach texts to grunt-cucumberjs HTML report. This helps in debugging or reviewing your results in particular to your tests data.
-
-```javascript
-this.After(function (scenario, callback) {
-  scenario.attach("test data goes here");
-});
-```
-
 ### Pie Charts
 
 Sample pie chart is available at [Bootstrap Theme Report with Pie Chart][3]
@@ -256,12 +225,19 @@ Two pie charts are displayed on report
 1. Features: number of passed/failed features
 2. Scenarios: number of passed/failed/pending scenarios.
 
-Please note that Pie Charts are available only for Bootstrap Theme
+Please note that Pie Charts are available only for Bootstrap Theme.
+
+
+### Tips
+
+Take a look at [cucumber-html-reporter][9] for more information on <b> Attaching ScreenShots, Plain Texts, Pretty JSON </b> to the HTML report 
+
 
 [1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"
 [2]: https://github.com/cucumber/cucumber-js "cucumber-js"
 [3]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-bootstrap.html "Bootstrap Theme Reports"
 [4]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-foundation.html "Foundation Theme Reports"
 [5]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-simple.html "Simple Theme Reports"
-[6]: https://www.npmjs.com/package/parallel-cucumber
 [8]: https://www.npmjs.com/package/cucumber-parallel
+[9]: https://www.npmjs.com/package/cucumber-html-reporter
+

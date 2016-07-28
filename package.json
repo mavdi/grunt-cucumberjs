@@ -30,8 +30,8 @@
   ],
   "dependencies": {
     "chai": "^3.5.0",
-    "cucumber-html-reporter": "^0.2.1",
-    "cucumber-parallel": "^0.1.10",
+    "cucumber-html-reporter": "^0.2.4",
+    "cucumber-parallel": "^0.1.11",
     "node-fs": "^0.1.7"
   },
   "devDependencies": {

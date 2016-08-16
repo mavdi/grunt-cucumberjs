@@ -216,7 +216,7 @@ Reports total number of failed/passed Scenarios in headers if set to `true`.
 Reports total number of failed/passed Features in headers if set to `false` or `undefined`.
 
 
-#### `launchReport`
+#### options.launchReport
 Type: `Boolean`
 
 Automatically launch HTML report at the end of test suite

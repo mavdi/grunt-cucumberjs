@@ -216,6 +216,16 @@ Reports total number of failed/passed Scenarios in headers if set to `true`.
 Reports total number of failed/passed Features in headers if set to `false` or `undefined`.
 
 
+#### `launchReport`
+Type: `Boolean`
+
+Automatically launch HTML report at the end of test suite
+
+`true`: Launch HTML report in the default browser
+
+`false`: Do not launch HTML report at the end of test suite
+
+
 ### Pie Charts
 
 Sample pie chart is available at [Bootstrap Theme Report with Pie Chart][3]

@@ -114,6 +114,10 @@ module.exports = function(grunt) {
             }
         }
 
+        if (grunt.option('rerun')) {
+            commands.push(grunt.option('rerun'));
+        }
+
         if (grunt.option('require')) {
             commands.push('--require', grunt.option('require'));
         }

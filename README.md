@@ -1,5 +1,7 @@
 grunt-cucumberjs
 ================
+[![v](https://img.shields.io/npm/v/grunt-cucumberjs.svg)](https://www.npmjs.com/package/grunt-cucumberjs)
+
 
 > Runs cucumberjs features and output results in various formats including html.
 

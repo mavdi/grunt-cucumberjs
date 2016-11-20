@@ -14,7 +14,16 @@ module.exports = function(grunt) {
         theme: 'bootstrap',
         output: 'test/report/features_report.html',
         debug: true,
-        reportSuiteAsScenarios: true
+        reportSuiteAsScenarios: true,
+        launchReport: true,
+        metadata: {
+            "App Version": "0.10.8",
+            "Test Environment": "QA",
+            "Browser": "Chrome  54.0.2840.98",
+            "Platform": "Windows 10",
+            "Parallel": "Scenarios",
+            "Executed": "Remote"
+        }
     };
 
     function verifyReport() {

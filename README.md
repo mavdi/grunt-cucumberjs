@@ -228,6 +228,30 @@ Automatically launch HTML report at the end of test suite
 `false`: Do not launch HTML report at the end of test suite
 
 
+#### `metadata`
+Type: `JSON` (optional)
+Default: `undefined`
+
+Print more data to your report, such as _browser info, platform, app info, environments_ etc. Data can be passed as JSON `key-value` pair. Reporter will parse the JSON and will show the _Key-Value_ under `Metadata` section on HTML report. Checkout the below preview HTML Report with Metadata.
+
+Pass the _Key-Value_ pair as per your need, as shown in below example,
+
+```json
+
+ metadata: {
+        "App Version":"0.3.2",
+        "Test Environment": "STAGING",
+        "Browser": "Chrome  54.0.2840.98",
+        "Platform": "Windows 10",
+        "Parallel": "Scenarios",
+        "Executed": "Remote"
+      }
+      
+```
+
+* [HTML Report Preview with Metadata][3]
+
+
 ### Pie Charts
 
 Sample pie chart is available at [Bootstrap Theme Report with Pie Chart][3]
@@ -247,7 +271,7 @@ Take a look at [cucumber-html-reporter][9] for more information on <b> Attaching
 
 [1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"
 [2]: https://github.com/cucumber/cucumber-js "cucumber-js"
-[3]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-bootstrap.html "Bootstrap Theme Reports"
+[3]: http://htmlpreview.github.io/?https://github.com/gkushang/cucumber-html-reporter/blob/develop/samples/html_reports/cucumber_report_bootstrap.html "Bootstrap Theme Reports"
 [4]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-foundation.html "Foundation Theme Reports"
 [5]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-simple.html "Simple Theme Reports"
 [8]: https://www.npmjs.com/package/cucumber-parallel

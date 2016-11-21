@@ -30,6 +30,9 @@ grunt.loadNpmTasks('grunt-cucumberjs');
 3. [Simple Theme Reports][5]
 
 
+## Snapshot of Bootstrap Report
+![Alt text](/test/cucumber-reports/screenshot/cucumber_report_bootstrap_snapshot.png "Snapshot - Bootstrap Report")
+
 ## The "cucumberjs" task
 
 ### Overview

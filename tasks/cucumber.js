@@ -114,16 +114,14 @@ module.exports = function(grunt) {
             }
         }
 
-        if (grunt.option('rerun')) {
-            commands.push(grunt.option('rerun'));
-        }
-
         if (grunt.option('require')) {
             commands.push('--require', grunt.option('require'));
         }
 
         if (grunt.option('features')) {
             commands.push(grunt.option('features'));
+        } else if (grunt.option('rerun')) {
+            commands.push(grunt.option('rerun'));
         } else {
             this.files.forEach(function(f) {
                 f.src.forEach(function(filepath) {

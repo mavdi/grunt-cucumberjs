@@ -118,10 +118,21 @@ module.exports = function(grunt) {
             commands.push('--require', grunt.option('require'));
         }
 
-        if (grunt.option('features')) {
+        if (grunt.option('rerun')) {
+            var filepath = grunt.option('rerun');
+            if (!grunt.file.exists(filepath)) {
+                grunt.log.warn('Rerun file "' + filepath + '" not found.');
+                return;
+            }
+
+            var scenarios = fs.readFileSync(filepath, 'utf-8').split('\n');
+            scenarios.forEach(function (scenario) {
+                if (scenario) {
+                    commands.push(scenario);
+                }
+            });
+        } else if (grunt.option('features')) {
             commands.push(grunt.option('features'));
-        } else if (grunt.option('rerun')) {
-            commands.push(grunt.option('rerun'));
         } else {
             this.files.forEach(function(f) {
                 f.src.forEach(function(filepath) {

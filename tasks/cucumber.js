@@ -119,17 +119,7 @@ module.exports = function(grunt) {
             commands.push('--require', grunt.option('require'));
         }
 
-        function returnIfEmpty(scenario) {
-            if (R.isEmpty(scenario)) {
-                grunt.log.warn('Rerun file "' + rerunFile + '" is empty. Exiting from task.');
-                return done();
-            }
-        }
-
-        function registerScenarios(scenario) {
-            returnIfEmpty(scenario);
-            commands.push(scenario);
-        }
+        var isScenarioEmpty = true;
 
         if (grunt.option('rerun')) {
 
@@ -142,11 +132,25 @@ module.exports = function(grunt) {
 
             var scenarios = fs.readFileSync(rerunFile, 'utf-8').split('\n');
 
-            returnIfEmpty(scenarios);
+            if (R.isEmpty(scenarios)) {
+                grunt.log.warn('Rerun file "' + rerunFile + '" is empty. Exiting from task: ' + scenario);
+                return done();
+            }
+
+            scenarios.forEach( function registerScenarios(scenario) {
+                if (isScenarioEmpty && R.isEmpty(scenario)) {
+                    grunt.log.warn('Rerun file "' + rerunFile + '" is empty. Exiting from task: ' + scenario);
+                    return done();
+                }
+
+                if (!R.isEmpty(scenario)) {
+                    commands.push(scenario);
+                    isScenarioEmpty = false;
+                }
+
+            });
 
             commands.push('--rerun', grunt.option('rerun'));
-
-            scenarios.forEach(registerScenarios);
 
         } else if (grunt.option('features')) {
             commands.push(grunt.option('features'));

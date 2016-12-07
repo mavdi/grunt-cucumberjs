@@ -10,6 +10,7 @@
 var fs = require('fs');
 var nodeFs = require('node-fs');
 var path = require('path');
+var R = require('ramda');
 
 module.exports = function(grunt) {
     grunt.registerMultiTask('cucumberjs', 'Run cucumber.js features', function() {
@@ -118,22 +119,39 @@ module.exports = function(grunt) {
             commands.push('--require', grunt.option('require'));
         }
 
+        function returnIfEmpty(scenario) {
+            if (R.isEmpty(scenario)) {
+                grunt.log.warn('Rerun file "' + rerunFile + '" is empty. Exiting from task.');
+                return done();
+            }
+        }
+
+        function registerScenarios(scenario) {
+            returnIfEmpty(scenario);
+            commands.push(scenario);
+        }
+
         if (grunt.option('rerun')) {
-            var filepath = grunt.option('rerun');
-            if (!grunt.file.exists(filepath)) {
-                grunt.log.warn('Rerun file "' + filepath + '" not found.');
-                return;
+
+            var rerunFile = grunt.option('rerun');
+
+            if (!grunt.file.exists(rerunFile)) {
+                grunt.log.warn('Rerun file "' + rerunFile + '" not found.');
+                return done();
             }
 
-            var scenarios = fs.readFileSync(filepath, 'utf-8').split('\n');
-            scenarios.forEach(function (scenario) {
-                if (scenario) {
-                    commands.push(scenario);
-                }
-            });
+            var scenarios = fs.readFileSync(rerunFile, 'utf-8').split('\n');
+
+            returnIfEmpty(scenarios);
+
+            commands.push('--rerun', grunt.option('rerun'));
+
+            scenarios.forEach(registerScenarios);
+
         } else if (grunt.option('features')) {
             commands.push(grunt.option('features'));
         } else {
+
             this.files.forEach(function(f) {
                 f.src.forEach(function(filepath) {
                     if (!grunt.file.exists(filepath)) {
@@ -143,6 +161,7 @@ module.exports = function(grunt) {
                     commands.push(filepath);
                 });
             });
+
         }
 
         var createReportDirectoryIfNotExists = function() {

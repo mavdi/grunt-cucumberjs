@@ -205,6 +205,8 @@ Take a look at `options.formats` to generate html report
 
 * Run failed scenarios by passing `--rerun=path/to/@rerun.txt` grunt option
 
+N.B.: If `@rerun.txt` file does not exists or if file is empty, the grunt task will return success.
+
 
 #### options.compiler
 Type: `String`

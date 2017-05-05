@@ -160,6 +160,15 @@ ends the suite after the first failure
 
 it can also be activated without setting `options.failFast` and passing `--fail-fast` as a grunt task option
 
+#### options.noStrict
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+will cause cucumber to succeed even if there are undefined or pending steps.
+
+it can also be activated without setting `options.noStrict` and passing `--no-strict` as a grunt task option
+
 #### options.dryRun
 Type: `Boolean`
 Default: `'false'`

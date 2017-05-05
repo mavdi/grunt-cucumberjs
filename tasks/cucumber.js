@@ -25,7 +25,8 @@ module.exports = function(grunt) {
             debug: false,
             debugger: false,
             failFast: false,
-            reportSuiteAsScenarios: false
+            reportSuiteAsScenarios: false,
+            noStrict: false
         });
 
         var handler = options.debugger ? require('../lib/requireHandler') : require('../lib/processHandler');
@@ -89,6 +90,10 @@ module.exports = function(grunt) {
             commands.push('--fail-fast');
         }
 
+        if (options.noStrict || grunt.option('no-strict') || grunt.cli.options['no-strict'] === true) {
+            commands.push('--no-strict');
+        }
+
         if (options.dryRun || grunt.option('dry-run') || grunt.cli.options['dry-run'] === true) {
             commands.push('--dry-run');
         }
@@ -137,7 +142,7 @@ module.exports = function(grunt) {
                 return done();
             }
 
-            scenarios.forEach( function registerScenarios(scenario) {
+            scenarios.forEach(function registerScenarios(scenario) {
                 if (isScenarioEmpty && R.isEmpty(scenario)) {
                     grunt.log.warn('Rerun file "' + rerunFile + '" is empty. Exiting from task: ' + scenario);
                     return done();

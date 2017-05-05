@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
+
 var fs = require('fs');
 var nodeFs = require('node-fs');
 var path = require('path');
@@ -23,9 +23,10 @@ module.exports = function(grunt) {
             tags: '',
             require: '',
             debug: false,
-            debugger: false,
+            'debugger': false,
             failFast: false,
-            reportSuiteAsScenarios: false
+            reportSuiteAsScenarios: false,
+            noStrict: false
         });
 
         var handler = options.debugger ? require('../lib/requireHandler') : require('../lib/processHandler');
@@ -89,18 +90,22 @@ module.exports = function(grunt) {
             commands.push('--fail-fast');
         }
 
+        if (options.noStrict || grunt.option('no-strict') || grunt.cli.options['no-strict'] === true) {
+            commands.push('--no-strict');
+        }
+
         if (options.dryRun || grunt.option('dry-run') || grunt.cli.options['dry-run'] === true) {
             commands.push('--dry-run');
         }
 
-        if (grunt.cli.options['parallel']) {
-            commands.push('--parallel', grunt.cli.options['parallel']);
+        if (grunt.cli.options.parallel) {
+            commands.push('--parallel', grunt.cli.options.parallel);
         } else if (options.parallel) {
             commands.push('--parallel', options.parallel);
         }
 
-        if (grunt.cli.options['compiler']) {
-            commands.push('--compiler', grunt.cli.options['compiler']);
+        if (grunt.cli.options.compiler) {
+            commands.push('--compiler', grunt.cli.options.compiler);
         } else if (options.compiler) {
             commands.push('--compiler', options.compiler);
         }
@@ -137,7 +142,7 @@ module.exports = function(grunt) {
                 return done();
             }
 
-            scenarios.forEach( function registerScenarios(scenario) {
+            scenarios.forEach(function registerScenarios(scenario) {
                 if (isScenarioEmpty && R.isEmpty(scenario)) {
                     grunt.log.warn('Rerun file "' + rerunFile + '" is empty. Exiting from task: ' + scenario);
                     return done();
@@ -179,10 +184,8 @@ module.exports = function(grunt) {
         handler(grunt, options, commands, function handlerCallback(err) {
             if (err) {
                 grunt.log.error('failed tests, please see the output');
-                return done(false);
-            } else {
-                return done();
             }
+            return done();
         });
 
     });

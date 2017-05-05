@@ -1,6 +1,11 @@
 grunt-cucumberjs
 ================
-[![v](https://img.shields.io/npm/v/grunt-cucumberjs.svg)](https://www.npmjs.com/package/grunt-cucumberjs)
+```diff
+- Forked from https://github.com/mavdi/grunt-cucumberjs
++ All credits to on the original creators
+```
+
+[![v](https://img.shields.io/npm/v/grunt-cucumberjs.svg)](https://www.npmjs.com/package/grunt-cucumberjs-fork)
 
 
 > Runs cucumberjs features and output results in various formats including html.
@@ -23,7 +28,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-cucumberjs');
 ```
 
-## Sample HTML Reports 
+## Sample HTML Reports
 
 1. [Bootstrap Theme Reports with Pie Chart][3]
 2. [Foundation Theme Reports][4]
@@ -99,6 +104,9 @@ Type: `String|Array`
 Default: `''`
 
 Passes the value as ```--tags``` parameter to cucumber. If an array, each item is passed as a separate ```--tags``` parameter.
+There are known issues in cucumberjs. We've seen issues using the old style of negative tag expression such as ```'~@ignore'```. Suggest that you use the expanded syntax ```'not @ignore'``` instead.
+
+[Cucumber Tag Expressions](https://docs.cucumber.io/tag-expressions/)
 
 #### options.theme
 Type: `String`
@@ -160,6 +168,15 @@ ends the suite after the first failure
 
 it can also be activated without setting `options.failFast` and passing `--fail-fast` as a grunt task option
 
+#### options.noStrict
+Type: `Boolean`
+Default: `'false'`
+Available: `['true', 'false']`
+
+will cause cucumber to succeed even if there are undefined or pending steps.
+
+it can also be activated without setting `options.noStrict` and passing `--no-strict` as a grunt task option
+
 #### options.dryRun
 Type: `Boolean`
 Default: `'false'`
@@ -219,7 +236,7 @@ Type: `Boolean`
 Default: `'false'`
 Available: `['true', 'false']`
 
-Reports total number of failed/passed Scenarios in headers if set to `true`. 
+Reports total number of failed/passed Scenarios in headers if set to `true`.
 Reports total number of failed/passed Features in headers if set to `false` or `undefined`.
 
 
@@ -251,7 +268,7 @@ Pass the _Key-Value_ pair as per your need, as shown in below example,
         "Parallel": "Scenarios",
         "Executed": "Remote"
       }
-      
+
 ```
 
 * [HTML Report Preview with Metadata][3]
@@ -271,7 +288,7 @@ Please note that Pie Charts are available only for Bootstrap Theme.
 
 ### Tips
 
-Take a look at [cucumber-html-reporter][9] for more information on <b> Attaching ScreenShots, Plain Texts, Pretty JSON </b> to the HTML report 
+Take a look at [cucumber-html-reporter][9] for more information on <b> Attaching ScreenShots, Plain Texts, Pretty JSON </b> to the HTML report
 
 
 [1]: https://code.google.com/p/selenium/wiki/WebDriverJs "WebDriverJS"
@@ -281,4 +298,3 @@ Take a look at [cucumber-html-reporter][9] for more information on <b> Attaching
 [5]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-simple.html "Simple Theme Reports"
 [8]: https://www.npmjs.com/package/cucumber-parallel
 [9]: https://www.npmjs.com/package/cucumber-html-reporter
-

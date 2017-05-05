@@ -1,15 +1,15 @@
 {
-  "name": "grunt-cucumberjs",
+  "name": "grunt-cucumberjs-fork",
   "description": "Generates documentation from Cucumber features",
   "version": "1.0.0",
-  "homepage": "https://github.com/mavdi/grunt-cucumberjs",
+  "homepage": "https://github.com/caseygoodhew/grunt-cucumberjs",
   "author": {
     "name": "Mehdi Avdi",
     "email": "mehdi.avdi@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mavdi/grunt-cucumberjs.git"
+    "url": "git://github.com/caseygoodhew/grunt-cucumberjs.git"
   },
   "contributors": [
     {
@@ -26,6 +26,15 @@
       "name": "Kushang Gajjar",
       "email": "g.kushang@gmail.com",
       "url": "https://github.com/gkushang"
+    },
+    {
+      "name": "Sowmya Yellamilli",
+      "url": "https://github.com/yellamillis"
+    },
+    {
+      "name": "Casey Goodhew",
+      "email": "goodhewc@gmail.com",
+      "url": "https://github.com/caseygoodhew"
     }
   ],
   "dependencies": {
@@ -44,7 +53,7 @@
     "grunt-jsbeautifier": "^0.2.13"
   },
   "bugs": {
-    "url": "https://github.com/mavdi/grunt-cucumberjs/issues"
+    "url": "https://github.com/caseygoodhew/grunt-cucumberjs/issues"
   },
   "license": "MIT",
   "licenses": [

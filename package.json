@@ -1,8 +1,8 @@
 {
   "name": "grunt-cucumberjs-fork",
   "description": "Generates documentation from Cucumber features",
-  "version": "1.0.0",
-  "homepage": "https://github.com/caseygoodhew/grunt-cucumberjs",
+  "version": "1.0.1",
+  "homepage": "https://github.com/mavdi/grunt-cucumberjs",
   "author": {
     "name": "Mehdi Avdi",
     "email": "mehdi.avdi@gmail.com"

@@ -1,11 +1,6 @@
 grunt-cucumberjs
 ================
-```diff
-- Forked from https://github.com/mavdi/grunt-cucumberjs
-+ All credits to on the original creators
-```
-
-[![v](https://img.shields.io/npm/v/grunt-cucumberjs.svg)](https://www.npmjs.com/package/grunt-cucumberjs-fork)
+[![v](https://img.shields.io/npm/v/grunt-cucumberjs.svg)](https://www.npmjs.com/package/grunt-cucumberjs)
 
 
 > Runs cucumberjs features and output results in various formats including html.
@@ -104,7 +99,7 @@ Type: `String|Array`
 Default: `''`
 
 Passes the value as ```--tags``` parameter to cucumber. If an array, each item is passed as a separate ```--tags``` parameter.
-There are known issues in cucumberjs. We've seen issues using the old style of negative tag expression such as ```'~@ignore'```. Suggest that you use the expanded syntax ```'not @ignore'``` instead.
+We've seen issues in cucumberjs using the old style of negative tag expression such as ```'~@ignore'```. Suggest that you use the expanded syntax ```'not @ignore'``` instead.
 
 [Cucumber Tag Expressions](https://docs.cucumber.io/tag-expressions/)
 

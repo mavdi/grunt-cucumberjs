@@ -1,3 +1,7 @@
+### 1.0.1 (2017-05-05)
+
+* Add `no-strict` option. Please visit ReadME for more info
+
 ### 0.10.2 (2016-06-23)
 
 * Show Project Name and Project Version on Foundation theme report

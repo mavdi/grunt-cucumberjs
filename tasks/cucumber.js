@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
+
 var fs = require('fs');
 var nodeFs = require('node-fs');
 var path = require('path');
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
             tags: '',
             require: '',
             debug: false,
-            debugger: false,
+            'debugger': false,
             failFast: false,
             reportSuiteAsScenarios: false,
             noStrict: false
@@ -98,14 +98,14 @@ module.exports = function(grunt) {
             commands.push('--dry-run');
         }
 
-        if (grunt.cli.options['parallel']) {
-            commands.push('--parallel', grunt.cli.options['parallel']);
+        if (grunt.cli.options.parallel) {
+            commands.push('--parallel', grunt.cli.options.parallel);
         } else if (options.parallel) {
             commands.push('--parallel', options.parallel);
         }
 
-        if (grunt.cli.options['compiler']) {
-            commands.push('--compiler', grunt.cli.options['compiler']);
+        if (grunt.cli.options.compiler) {
+            commands.push('--compiler', grunt.cli.options.compiler);
         } else if (options.compiler) {
             commands.push('--compiler', options.compiler);
         }
@@ -184,10 +184,8 @@ module.exports = function(grunt) {
         handler(grunt, options, commands, function handlerCallback(err) {
             if (err) {
                 grunt.log.error('failed tests, please see the output');
-                return done(false);
-            } else {
-                return done();
             }
+            return done();
         });
 
     });

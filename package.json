@@ -38,11 +38,11 @@
     }
   ],
   "dependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.0.2",
     "cucumber-html-reporter": "^2.0.0",
     "cucumber-parallel": "^2.0.0",
     "node-fs": "^0.1.7",
-    "ramda": "^0.22.1"
+    "ramda": "^0.24.1"
   },
   "devDependencies": {
     "cucumber": "^2.3.1",

@@ -1,15 +1,11 @@
-grunt-cucumberjs
+Grunt Cucumberjs
 ================
-[![v](https://img.shields.io/npm/v/grunt-cucumberjs.svg)](https://www.npmjs.com/package/grunt-cucumberjs)
+***Grunt task to run Cucumber.js. Outputs results in various HTML themes. Runs Cucumber.js in Parallel***
 
-
-> Runs cucumberjs features and output results in various formats including html.
-
-> Runs cucumberjs features and/or scenarios in parallel.
+[![v][npm-shield]][npm-link] [![v][license-shield]][license-link]
 
 
 ## Getting Started
-This plugin requires Grunt `~0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -70,7 +66,7 @@ cucumberjs: {
 }
 ```
 
-### Usage
+## Usage
 ```bash
 #runs all features specified in task
 $ grunt cucumberjs
@@ -79,7 +75,7 @@ $ grunt cucumberjs
 $ grunt cucumberjs --require=test/functional/step_definitions/ --features=features/myFeature.feature --format=pretty
 ```
 
-### Options
+## Options
 
 #### options.steps
 Type: `String`
@@ -281,6 +277,10 @@ Two pie charts are displayed on report
 Please note that Pie Charts are available only for Bootstrap Theme.
 
 
+## Changelog 
+
+[changelog][changelog]
+
 ### Tips
 
 Take a look at [cucumber-html-reporter][9] for more information on <b> Attaching ScreenShots, Plain Texts, Pretty JSON </b> to the HTML report
@@ -293,3 +293,16 @@ Take a look at [cucumber-html-reporter][9] for more information on <b> Attaching
 [5]: http://htmlpreview.github.io/?https://github.com/gkushang/grunt-cucumberjs/blob/cucumber-reports/test/cucumber-reports/cucumber-report-simple.html "Simple Theme Reports"
 [8]: https://www.npmjs.com/package/cucumber-parallel
 [9]: https://www.npmjs.com/package/cucumber-html-reporter
+
+
+
+[changelog]: https://github.com/mavdi/grunt-cucumberjs/blob/master/CHANGELOG.md
+
+[npm-shield]: https://img.shields.io/npm/v/grunt-cucumberjs.svg
+[npm-link]: https://www.npmjs.com/package/grunt-cucumberjs
+
+[license-shield]: https://img.shields.io/github/license/mashape/apistatus.svg
+[license-link]: https://github.com/mavdi/grunt-cucumberjs/
+
+
+

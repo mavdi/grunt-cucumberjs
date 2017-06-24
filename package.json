@@ -38,14 +38,14 @@
     }
   ],
   "dependencies": {
-    "chai": "^3.5.0",
-    "cucumber-html-reporter": "^0.3.6",
-    "cucumber-parallel": "^0.1.11",
+    "chai": "^4.0.2",
+    "cucumber-html-reporter": "^2.0.0",
+    "cucumber-parallel": "^2.0.0",
     "node-fs": "^0.1.7",
-    "ramda": "^0.22.1"
+    "ramda": "^0.24.1"
   },
   "devDependencies": {
-    "cucumber": "^1.3.1",
+    "cucumber": "^2.3.1",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.0.0",
@@ -67,7 +67,8 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "npm run clean && grunt cucumberjs",
+    "clean": "rm -rf test/report/*.html test/report/cucumber_report.json test/report/*.json test/report/screenshot"
   },
   "keywords": [
     "gruntplugin",

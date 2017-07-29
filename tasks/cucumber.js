@@ -184,6 +184,7 @@ module.exports = function(grunt) {
         handler(grunt, options, commands, function handlerCallback(err) {
             if (err) {
                 grunt.log.error('failed tests, please see the output');
+                return done(false);
             }
             return done();
         });

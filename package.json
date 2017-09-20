@@ -38,9 +38,9 @@
     }
   ],
   "dependencies": {
-    "chai": "^4.0.2",
-    "cucumber-html-reporter": "^2.0.0",
-    "cucumber-parallel": "^2.0.0",
+    "chai": "^4.1.2",
+    "cucumber-html-reporter": "^3.0.4",
+    "cucumber-parallel": "^2.0.3",
     "node-fs": "^0.1.7",
     "ramda": "^0.24.1"
   },

@@ -35,11 +35,16 @@
       "name": "Casey Goodhew",
       "email": "goodhewc@gmail.com",
       "url": "https://github.com/caseygoodhew"
+    },
+    {
+      "name": "John J. Barton",
+      "email": "johnjbarton@johnjbarton.com",
+      "url": "https://github.com/johnjbarton",
     }
   ],
   "dependencies": {
     "chai": "^4.1.2",
-    "cucumber-html-reporter": "^3.0.4",
+    "cucumber-html-reporter": "^4.0.3",
     "cucumber-parallel": "^2.0.3",
     "node-fs": "^0.1.7",
     "ramda": "^0.24.1"
